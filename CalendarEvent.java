@@ -4,21 +4,23 @@ public class CalendarEvent{
 
 	private String title;
 	private Date  eventTime;
-	private int eventType;//0- Unlabled 1-Private 2- work 3- holiday
-	
+	private LinkedList eventType;//0- Unlabled 1-Private 2- work 3- holiday
+	String eventTypename;
 	
 	public CalendarEvent()
 	{
 		title = "New Event";
 		eventTime = new Date();
-		eventType = 0; 
+		eventTypename = "0"; 
 	}
 	
-	public CalendarEvent(String t, Date d, int e)
+	public CalendarEvent(String t, Date d, String Category)
 	{
 		title = t;
 		eventTime = d;
-		eventType = e;
+		addEventTypeCategory(String Category)
+		eventTypename = category;
+		
 	}
 
 
@@ -36,7 +38,8 @@ public class CalendarEvent{
 	
 	public int getEventType()
 	{
-		return this.eventType;
+		
+		return this.eventTypename;
 	}
 
 	/**
@@ -78,12 +81,54 @@ public void editDate(CalendarEvent arg, Date updated){
 		
 }
 //Method changes event type to an updated type set by the user
-public void editEventType(CalendarEvent arg, int type){
+
+
+public void addEventTypeCategory(String name){
 	
-	arg.eventType = type;
-		
+	eventType.add(name);
+	
+}
+
+public void deleteEventTypeCategory(String name){
+	
+	for(int count =0; count <= eventType.size();count++)
+	{
+		String comparer = eventType.get(count);
+		if(comparer == name)
+		{
+			eventType.remove(count)
+			return;
+		}
+	}
 }
 
 
+public void editEventTypeCategory(String goingtobechanged, String replacer){
+	
+	for(int count =0; count <= eventType.size();count++)
+	{
+		String comparer = eventType.get(count);
+		if(comparer == name)
+		{
+			eventType.add(count)
+			return;
+		}
+	}
+}
+// This function does nothing useful but in case something messes up it checks to see if the event type is stored
+// in linked list structure 
+public boolean checkEventTypeCategory(String name){
+	
+	for(int count =0; count <= eventType.size();count++)
+	{
+		String comparer = eventType.get(count);
+		if(comparer == name)
+		{
+			
+			return true;
+		}
+	}
+	return false;
+}
 
 }
