@@ -13,7 +13,7 @@ public class LinkedList
 		listCount = 0;
 	}
 	
-	public void add(Object data)
+	public void add(String data)
 	// post: appends the specified element to the end of this list.
 	{
 		Node temp = new Node(data);
@@ -28,7 +28,7 @@ public class LinkedList
 		listCount++;// increment the number of elements variable
 	}
 	
-	public void add(Object data, int index)
+	public void add(String data, int index)
 	// post: inserts the specified element at the specified position in this list.
 	{
 		Node temp = new Node(data);
@@ -46,7 +46,7 @@ public class LinkedList
 		listCount++;// increment the number of elements variable
 	}
 	
-	public Object get(int index)
+	public String get(int index)
 	// post: returns the element at the specified position in this list.
 	{
 		// index must be 1 or higher
@@ -109,11 +109,11 @@ public class LinkedList
 		Node next;
 		// data carried by this node.
 		// could be of any type you need.
-		Object data;
+		String data;
 		
 
 		// Node constructor
-		public Node(Object _data)
+		public Node(String _data)
 		{
 			next = null;
 			data = _data;
@@ -121,19 +121,19 @@ public class LinkedList
 		
 		// another Node constructor if we want to
 		// specify the node to point to.
-		public Node(Object _data, Node _next)
+		public Node(String _data, Node _next)
 		{
 			next = _next;
 			data = _data;
 		}
 		
 		// these methods should be self-explanatory
-		public Object getData()
+		public String getData()
 		{
 			return data;
 		}
 		
-		public void setData(Object _data)
+		public void setData(String _data)
 		{
 			data = _data;
 		}
