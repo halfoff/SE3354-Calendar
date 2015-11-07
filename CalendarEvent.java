@@ -29,7 +29,7 @@ public class CalendarEvent{
 		return this.eventTime;
 	}
 	
-	public String getEventTitle()
+	public String gettitle()
 	{
 		return this.title;
 	}
@@ -58,7 +58,32 @@ public class CalendarEvent{
 	}
 
 
+
+//Delete calendar event by setting its arguments = to null
+
+public void deleteEvent(CalendarEvent arg){
 	
+	arg = null;
+}
+//Method changes event title to updated title set by user
+public void editTitle(CalendarEvent arg, string name){
+	
+	arg.title = name;
+	
+}
+//Method changes date to an updated date set by user
+public void editDate(CalendarEvent arg, Date updated){
+	
+	arg.eventTime = updated;
+		
+}
+//Method changes event type to an updated type set by the user
+public void editEventType(CalendarEvent arg, int type){
+	
+	arg.eventType = type;
+		
+}
+
 
 
 }
