@@ -16,9 +16,20 @@ public class CalendarEvent{
 	
 	public CalendarEvent(String t, Date d, String Category)
 	{
+		// here we are looking if the category is in the linked list if it is then we do nothing and simply set name
+		// else we have to add the category to the linked list structure and set the event's category type to it. 
 		title = t;
 		eventTime = d;
-		addEventTypeCategory(String Category)
+		for(int count =0; count <= eventType.size();count++)
+	{
+		String comparer = eventType.get(count);
+		if(comparer == name)
+		{
+		addEventTypeCategory(String Category)	
+			return;
+		}
+	}
+		
 		eventTypename = category;
 		
 	}
