@@ -1,26 +1,33 @@
 import java.util.Date;
 
-public class CalendarEvent{
+public class CalendarEvent implements Comparable<CalendarEvent>{
 
 	private String title;
-	private Date  eventTime;
-	private LinkedList eventType;//0- Unlabled 1-Private 2- work 3- holiday
-	String eventTypename;
+	private Date eventStart;
+	private Date eventEnd;
+	private int eventType;
+	private RepeatType repeat; 
+	
+	/*private LinkedList eventType;//0- Unlabled 1-Private 2- work 3- holiday
+	String eventTypename;*/
 	
 	public CalendarEvent()
 	{
 		title = "New Event";
-		eventTime = new Date();
-		eventTypename = "0"; 
+		eventStart = new Date();
+		eventEnd = new Date();
+		eventType = 0; 
+		repeat = RepeatType.NoRepeat;
 	}
 	
-	public CalendarEvent(String t, Date d, String Category)
+	public CalendarEvent(String t, Date d, int category)
 	{
 		// here we are looking if the category is in the linked list if it is then we do nothing and simply set name
 		// else we have to add the category to the linked list structure and set the event's category type to it. 
 		title = t;
-		eventTime = d;
-		for(int count =0; count <= eventType.size();count++)
+		eventStart = d;
+		eventType = category;
+		/*for(int count =0; count <= eventType.size();count++)
 	{
 		String comparer = eventType.get(count);
 		if(comparer == name)
@@ -30,19 +37,18 @@ public class CalendarEvent{
 		}
 	}
 		
-		eventTypename = category;
+		eventTypename = category;*/
 		
 	}
 
 
-	
-	
-	public Date getEventDate()
+	public RepeatType getRepeat()
 	{
-		return this.eventTime;
+		return this.repeat;
 	}
+
 	
-	public String gettitle()
+	public String getTitle()
 	{
 		return this.title;
 	}
@@ -50,28 +56,36 @@ public class CalendarEvent{
 	public int getEventType()
 	{
 		
-		return this.eventTypename;
+		return this.eventType;
 	}
 
 	/**
 	 * 
 	 * @param arg
 	 * @return the result of java.util.Date's compareTo method
-	 * 
+	 * This compares the start date of two CalendarEvents.
 	 * 0 if event and arg are at the same time. 
 	 * > 0 if event is after arg
 	 * < 0 if event is before arg
 	 * 
-	 * For some reaosn I was getting an error telling me I didn't properly override the compareTo
-	 * method, so I just removed the comparable interface. Hopefully it doesnt break anything by 
-	 * doing that. 
+	 *  
 	 */
-	public int compareTo(CalendarEvent arg) {
-		return this.eventTime.compareTo(arg.getEventDate());
-		
+	public int compareTo(CalendarEvent arg)
+	{
+		return this.getStart().compareTo(arg.getStart());
 	}
+	
 
 
+
+	public Date getEnd()
+	{
+		return this.eventEnd;
+	}
+	public Date getStart() {
+			// TODO Auto-generated method stub
+			return this.eventStart;
+	}
 
 //Delete calendar event by setting its arguments = to null
 
@@ -80,21 +94,13 @@ public void deleteEvent(CalendarEvent arg){
 	arg = null;
 }
 //Method changes event title to updated title set by user
-public void editTitle(CalendarEvent arg, string name){
+public void editTitle(CalendarEvent arg, String name){
 	
 	arg.title = name;
 	
 }
-//Method changes date to an updated date set by user
-public void editDate(CalendarEvent arg, Date updated){
-	
-	arg.eventTime = updated;
-		
-}
-//Method changes event type to an updated type set by the user
 
-
-public void addEventTypeCategory(String name){
+/*public void addEventTypeCategory(String name){
 	
 	eventType.add(name);
 	
@@ -140,6 +146,6 @@ public boolean checkEventTypeCategory(String name){
 		}
 	}
 	return false;
-}
+}*/
 
 }

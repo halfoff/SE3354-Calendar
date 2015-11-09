@@ -43,23 +43,31 @@ public interface EventManager {
 		return new CalendarEvent(title, d, flag);
 	}
 	
-	public static boolean checkIndividualConflict(CalendarEvent event1, CalendarEvent event2)
+	/**
+	 * 
+	 * @param event1
+	 * @param event2
+	 * @return status of conflict
+	 * 
+	 * 1 if event1 starts after event2 ends
+	 * -1 if event 1 ends before event 2 starts
+	 * 0 if there is any overlap between the two. 
+	 */
+	public static int checkIndividualConflict(CalendarEvent event1, CalendarEvent event2)
 	{
-		if(event1.compareTo(event2) == 0)
-			return true;
-		return false;
+
+			if(event1.getStart().after(event2.getEnd()))
+			{
+				return 1;
+			}else if(event1.getEnd().before(event2.getStart()))
+			{
+				return -1;
+			}else
+				return 0;
+		
 	}	
 	
-	/** 
-	 * Override this method. Replace o with the data structure that you are using to store
-	 * the events. Then implement the most applicable way to search through the object and check
-	 *Don't forget you can use the compareTo method from CalendarEvent to check the conflict. 
-	 * @return
-	 */
-	public static boolean checkTotalConflict(CalendarEvent event1, Object o)
-	{
-		return false;
-	}
+
 	
 
 }
