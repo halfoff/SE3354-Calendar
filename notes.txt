@@ -1,0 +1,20 @@
+public static int onEvent() {
+	calEvent newEvent = EventManager.getEvent(0);
+	if(newEvent.getRepeat() == DAILY)
+		Calendar newCal = new Calendar();
+		newCal.setTime(newEvent.getStart());
+		newCal.add(DAY, 1);
+		newEvent.setStart(new Date(newCal.getTime()));
+		//repeat for end date
+	}
+	//repeat for weekly, monthly, and yearly
+	EventManager.removeEvent(0);
+	EventManager.addEvent(newEvent);
+}
+
+public static void loop() {
+	sleep(60000);
+	Date current = new Date();
+	if(current.after(EventManager.getEvent(0)))
+		EventManager.onEvent()
+}
