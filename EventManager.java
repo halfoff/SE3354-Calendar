@@ -69,20 +69,40 @@ public class EventManager {
 	}
 	*/
 	
-	public static void addEvent(CalendarEvent calEvent) {
+	/**
+	 * 
+	 * @param calEvent
+	 * @return index where calEvent is located
+	 */
+	public static int addEvent(CalendarEvent calEvent) {
 		insertEvent(calEvent);
+		return events.indexOf(calEvent);
 	}
 	
 	public static boolean removeEvent(int index) {
 		if(events.isEmpty())
+		{
+			status = "Remove not successful. ArrayList is empty.";
 			return false;
-		events.remove(index);
+		}
+			
+		
+		status = "Remove Successful. " + events.remove(index); 
 		return true;
 	}
 	
+	/**
+	 * 
+	 * @param index
+	 * @return
+	 */
 	public static CalendarEvent getEvent(int index) {
 		if(events.isEmpty())
+		{
+			status = "No events exist.";
 			return null;
+		}
+			
 		return events.get(index);
 	}
 	
@@ -93,12 +113,12 @@ public class EventManager {
 	private static void insertEvent(CalendarEvent calEvent) {
 		if(events.isEmpty()) {
 			events.add(calEvent);
-			System.out.println("Added event " + calEvent.getTitle());
-			return;
+			status = "Added event " + calEvent.getTitle();
+			
 		}else
 		{
 			events.add(calEvent);
-			System.out.println("Added event " + calEvent.getTitle());
+			status = "Added event " + calEvent.getTitle() + "events sorted.";
 			Collections.sort(events);
 			
 		}
@@ -139,9 +159,7 @@ public class EventManager {
 		return status;
 	}
 	
-	/**
-	 * 
-	 */
+	
 	public static void loop() {
 		//sleep(60000);
 		Date current = new Date();
