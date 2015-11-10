@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.util.Calendar;
 import java.util.ArrayList;
 
 /**
@@ -134,6 +135,19 @@ public class EventManager {
 	}
 	
 	public static void onEvent() {
-		
+		CalendarEvent calEvent = events.get(0);
+		if(calEvent.getRepeat() == RepeatType.NO_REPEAT)
+			return;
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(calEvent.getStart());
+		if(calEvent.getRepeat() == RepeatType.DAILY)
+			cal.add(Calendar.DAY_OF_MONTH, 1);
+		else if(calEvent.getRepeat() == RepeatType.WEEKLY)
+			cal.add(Calendar.WEEK_OF_MONTH, 1);
+		else if(calEvent.getRepeat() == RepeatType.MONTHLY)
+			cal.add(Calendar.MONTH, 1);
+		else if(calEvent.getRepeat() == RepeatType.YEARLY)
+			cal.add(Calendar.YEAR, 1);
+		calEvent.setStart(cal.getTime());
 	}
 }
