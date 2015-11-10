@@ -12,6 +12,11 @@ public class EventManager {
 	static ArrayList<CalendarEvent> events;
 	static String status;
 	
+	EventManager() {
+		events = new ArrayList<CalendarEvent>();
+		status = "";
+	}
+	
 	/**
 	 * 
 	 * @param d date for event
@@ -65,14 +70,25 @@ public class EventManager {
 	}
 	
 	public static CalendarEvent getEvent(int index) {
-		//TODO: check if events is empty and handle
+		if(events.isEmpty())
+			return null;
 		return events.get(index);
 	}
 	
 	public static void insertEvent(CalendarEvent calEvent) {
 		if(events.isEmpty())
 			events.add(calEvent);
-		//TODO: insert calEvent into events so that it is sorted
+		int i = 0;
+		for(; i < events.size(); ++i) {
+			if(calEvent.compareTo(events.get(i)) > 0)
+				events.add(i, calEvent);
+				return;
+		}
+		if(checkIndividualConflict(calEvent, events.get(i)) == 0)
+			status = "Conflict between " + calEvent.getTitle() + " and " + events.get(i);
+		else
+			status = "";
+		events.add(calEvent);
 	}
 	
 	/**
