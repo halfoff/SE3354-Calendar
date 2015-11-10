@@ -2,7 +2,36 @@ import java.util.Date;
 import java.util.Calendar;
 
 
-public class CalendarEvent implements Comparable<CalendarEvent>{
+public class CalendarEvent implements Comparable<CalendarEvent>, java.io.Serializable{
+	
+	try{
+// Serialize data object to a file
+ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("CalendarEvent.ser"));
+out.writeObject(object);
+out.close();
+
+// Serialize data object to a byte array
+ByteArrayOutputStream bos = new ByteArrayOutputStream() ;
+out = new ObjectOutputStream(bos) ;
+out.writeObject(object);
+out.close();
+
+// Get the bytes of the serialized object
+byte[] buf = bos.toByteArray();
+} catch (IOException e) {
+}
+
+/*
+this is for reading the file back 
+
+try{ FileInputStream door = new FileInputStream
+("name_of_file.sav"); ObjectInputStream reader = new
+ObjectInputStream(door); MyObject x = new MyObject(); x =
+(MyObject) reader.nextObject(); }catch (IOException e)
+{ e.printStackTrace(); }
+
+
+*/
 
 	private String title;
 	private Calendar eventStart;
