@@ -1,5 +1,6 @@
 import java.util.Date;
 
+
 public class CalendarEvent implements Comparable<CalendarEvent>{
 
 	private String title;
@@ -17,15 +18,15 @@ public class CalendarEvent implements Comparable<CalendarEvent>{
 		eventStart = new Date();
 		eventEnd = new Date();
 		eventType = 0; 
-		repeat = RepeatType.NoRepeat;
+		repeat = RepeatType.NO_REPEAT;
 	}
 	
-	public CalendarEvent(String t, Date d, int category)
+	public CalendarEvent(String t, int category)
 	{
 		// here we are looking if the category is in the linked list if it is then we do nothing and simply set name
 		// else we have to add the category to the linked list structure and set the event's category type to it. 
 		title = t;
-		eventStart = d;
+		//eventStart = d;
 		eventType = category;
 		/*for(int count =0; count <= eventType.size();count++)
 	{
@@ -46,6 +47,10 @@ public class CalendarEvent implements Comparable<CalendarEvent>{
 	{
 		return this.repeat;
 	}
+	
+	public void setRepeat(RepeatType rt) {
+		this.repeat = rt;
+	}
 
 	
 	public String getTitle()
@@ -53,10 +58,22 @@ public class CalendarEvent implements Comparable<CalendarEvent>{
 		return this.title;
 	}
 	
+	public void setTitle(String new_title) {
+		this.title = new_title;
+	}
+	
 	public int getEventType()
 	{
 		
 		return this.eventType;
+	}
+	
+	public void setStart(Date new_start) {
+		this.eventStart = new_start;
+	}
+	
+	public void setEnd(Date new_end) {
+		this.eventEnd = new_end;
 	}
 
 	/**
