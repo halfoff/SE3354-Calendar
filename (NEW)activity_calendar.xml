@@ -37,7 +37,7 @@
             android:id="@+id/header"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="#78C165"
+            android:background="#00FF00"
             android:gravity="center"
             android:orientation="horizontal"
             android:padding="10dp" >
@@ -68,7 +68,7 @@
                     android:layout_marginTop="5dip"
                     android:gravity="center"
                     android:text="January"
-                    android:textColor="#ffffff"
+                    android:textColor="#FFFFFF"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -103,7 +103,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Sun"
-                android:textColor="#ffffff" />
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/TextView05"
@@ -112,7 +112,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Mon"
-                android:textColor="#ffffff" />
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/TextView04"
@@ -121,7 +121,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Tue"
-                android:textColor="#ffffff" />
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/TextView03"
@@ -130,7 +130,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Wed"
-                android:textColor="#ffffff" />
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/TextView02"
@@ -139,7 +139,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Thu"
-                android:textColor="#ffffff" />
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/TextView01"
@@ -148,7 +148,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Fri"
-                android:textColor="#ffffff" />
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/textView1"
@@ -157,7 +157,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Sat"
-                android:textColor="#ffffff" />
+                android:textColor="#FFFFFF" />
 
         </TableRow>
 
@@ -165,7 +165,7 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="#dfdfdf"
+            android:background="#DFDFDF"
             android:padding="2dp" />
 
         <GridView
@@ -173,7 +173,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="#00000000"
-            android:cacheColorHint="#80000000"
+            android:cacheColorHint="#0D0D0D"
             android:gravity="center"
             android:listSelector="@android:color/transparent"
             android:numColumns="7"
