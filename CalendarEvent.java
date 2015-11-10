@@ -68,6 +68,11 @@ public class CalendarEvent implements Comparable<CalendarEvent>{
 		return this.eventType;
 	}
 	
+	public int setEventType(){
+		
+		this.eventType = new_category;
+	}
+	
 	public void setStart(Date new_start) {
 		this.eventStart = new_start;
 	}
