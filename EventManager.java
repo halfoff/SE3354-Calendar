@@ -131,12 +131,12 @@ public class EventManager {
 	public static void loop() {
 		//sleep(60000);
 		Date current = new Date();
-		if(current.after(EventManager.getEvent(0).getStart()));
+		if(current.after(EventManager.getEvent(events.size() - 1).getStart()));
 			EventManager.onEvent();
 	}
 	
 	public static void onEvent() {
-		CalendarEvent calEvent = events.get(0);
+		CalendarEvent calEvent = events.get(events.size() - 1);
 		if(calEvent.getRepeat() == RepeatType.NO_REPEAT)
 			return;
 		Calendar cal = Calendar.getInstance();
