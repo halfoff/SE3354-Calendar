@@ -13,7 +13,7 @@ public class EventManager {
 	static ArrayList<CalendarEvent> events;
 	static String status;
 	
-	EventManager() {
+	public static void init() {
 		events = new ArrayList<CalendarEvent>();
 		status = "";
 	}
@@ -63,6 +63,10 @@ public class EventManager {
 		return calEvent;
 	}
 	
+	public static void addEvent(CalendarEvent calEvent) {
+		insertEvent(calEvent);
+	}
+	
 	public static boolean removeEvent(int index) {
 		if(events.isEmpty())
 			return false;
@@ -76,20 +80,17 @@ public class EventManager {
 		return events.get(index);
 	}
 	
-	public static void insertEvent(CalendarEvent calEvent) {
-		if(events.isEmpty())
+	private static void insertEvent(CalendarEvent calEvent) {
+		if(events.isEmpty()) {
 			events.add(calEvent);
-		int i = 0;
-		for(; i < events.size(); ++i) {
-			if(calEvent.compareTo(events.get(i)) > 0)
-				events.add(i, calEvent);
-				return;
+			System.out.println("Added event " + calEvent.getTitle());
+			return;
 		}
-		if(checkIndividualConflict(calEvent, events.get(i)) == 0)
-			status = "Conflict between " + calEvent.getTitle() + " and " + events.get(i);
-		else
-			status = "";
-		events.add(calEvent);
+		int i = 0;
+		while(calEvent.compareTo(events.get(i)) < 0)
+			++i;
+		events.add(i, calEvent);
+		System.out.println("Added event " + calEvent.getTitle());
 	}
 	
 	/**
@@ -102,7 +103,7 @@ public class EventManager {
 	 * -1 if event 1 ends before event 2 starts
 	 * 0 if there is any overlap between the two. 
 	 */
-	public static int checkIndividualConflict(CalendarEvent event1, CalendarEvent event2)
+	private static int checkIndividualConflict(CalendarEvent event1, CalendarEvent event2)
 	{
 
 			if(event1.getStart().after(event2.getEnd()))
