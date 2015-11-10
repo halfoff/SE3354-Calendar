@@ -1,11 +1,12 @@
 import java.util.Date;
+import java.util.Calendar;
 
 
 public class CalendarEvent implements Comparable<CalendarEvent>{
 
 	private String title;
-	private Date eventStart;
-	private Date eventEnd;
+	private Calendar eventStart;
+	private Calendar eventEnd;
 	private EventType eventType;
 	private RepeatType repeat; 
 	
@@ -15,8 +16,8 @@ public class CalendarEvent implements Comparable<CalendarEvent>{
 	public CalendarEvent()
 	{
 		title = "New Event";
-		eventStart = new Date();
-		eventEnd = new Date();
+		eventStart = Calendar.getInstance();
+		eventEnd = Calendar.getInstance();
 		eventType = EventType.UNLABLED;
 		repeat = RepeatType.NO_REPEAT;
 	}
@@ -42,6 +43,9 @@ public class CalendarEvent implements Comparable<CalendarEvent>{
 		
 	}
 
+	public String toString() {
+		return "Title: " + this.title + " Date: " + this.eventStart.getTime().toString();
+	}
 
 	public RepeatType getRepeat()
 	{
@@ -73,11 +77,17 @@ public class CalendarEvent implements Comparable<CalendarEvent>{
 		this.eventType = new_category;
 	}
 	*/
-	public void setStart(Date new_start) {
-		this.eventStart = new_start;
+	public void setStart(int year, int month, int date) {
+		Calendar cal = Calendar.getInstance();
+		cal.set(year, month, date);
+		this.eventStart = cal;
 	}
 	
-	public void setEnd(Date new_end) {
+	public void setStart(Calendar new_cal) {
+		this.eventStart = new_cal;
+	}
+	
+	public void setEnd(Calendar new_end) {
 		this.eventEnd = new_end;
 	}
 
@@ -100,11 +110,11 @@ public class CalendarEvent implements Comparable<CalendarEvent>{
 
 
 
-	public Date getEnd()
+	public Calendar getEnd()
 	{
 		return this.eventEnd;
 	}
-	public Date getStart() {
+	public Calendar getStart() {
 			// TODO Auto-generated method stub
 			return this.eventStart;
 	}
