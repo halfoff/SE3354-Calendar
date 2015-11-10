@@ -24,7 +24,8 @@ public class EventManager {
 	 * @param d date for event
 	 * @return an event with with a given date. 
 	 */
-	public static CalendarEvent createEvent( Date start, Date end)
+	/*
+	public static CalendarEvent createEvent( Calendar start, Date end)
 	{
 		CalendarEvent calEvent = new CalendarEvent("New Event", EventType.UNLABLED);
 		calEvent.setStart(start);
@@ -32,12 +33,14 @@ public class EventManager {
 		insertEvent(calEvent);
 		return calEvent;
 	}
+	*/
 	/**
 	 * 
 	 * @param title
 	 * @param d
 	 * @return create event with specified title and date.
 	 */
+	/*
 	public static CalendarEvent createEvent(String title, Date start, Date end)
 	{
 		CalendarEvent calEvent = new CalendarEvent(title, EventType.UNLABLED);
@@ -46,7 +49,7 @@ public class EventManager {
 		insertEvent(calEvent);
 		return calEvent;
 	}
-	
+	*/
 	
 	/**
 	 * 
@@ -55,6 +58,7 @@ public class EventManager {
 	 * @param flag
 	 * @return event with specified title, date, and type. 
 	 */
+	/*
 	public static CalendarEvent createEvent(String title, Date start, Date end, EventType et)
 	{
 		CalendarEvent calEvent = new CalendarEvent(title, et);
@@ -63,6 +67,7 @@ public class EventManager {
 		insertEvent(calEvent);
 		return calEvent;
 	}
+	*/
 	
 	public static void addEvent(CalendarEvent calEvent) {
 		insertEvent(calEvent);
@@ -93,6 +98,7 @@ public class EventManager {
 		}else
 		{
 			events.add(calEvent);
+			System.out.println("Added event " + calEvent.getTitle());
 			Collections.sort(events);
 			
 		}
@@ -139,7 +145,7 @@ public class EventManager {
 	public static void loop() {
 		//sleep(60000);
 		Date current = new Date();
-		if(current.after(EventManager.getEvent(events.size() - 1).getStart()));
+		if(current.after(EventManager.getEvent(events.size() - 1).getStart().getTime()));
 			EventManager.onEvent();
 	}
 	
@@ -148,7 +154,7 @@ public class EventManager {
 		if(calEvent.getRepeat() == RepeatType.NO_REPEAT)
 			return;
 		Calendar cal = Calendar.getInstance();
-		cal.setTime(calEvent.getStart());
+		cal.setTime(calEvent.getStart().getTime());
 		if(calEvent.getRepeat() == RepeatType.DAILY)
 			cal.add(Calendar.DAY_OF_MONTH, 1);
 		else if(calEvent.getRepeat() == RepeatType.WEEKLY)
@@ -157,6 +163,6 @@ public class EventManager {
 			cal.add(Calendar.MONTH, 1);
 		else if(calEvent.getRepeat() == RepeatType.YEARLY)
 			cal.add(Calendar.YEAR, 1);
-		calEvent.setStart(cal.getTime());
+		calEvent.setStart(cal);
 	}
 }
