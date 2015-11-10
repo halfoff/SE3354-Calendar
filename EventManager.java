@@ -1,5 +1,6 @@
 import java.util.Date;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.ArrayList;
 
 /**
@@ -80,17 +81,24 @@ public class EventManager {
 		return events.get(index);
 	}
 	
+	/**
+	 * Adds calEvent to the Arraylist. Sorts arrayList if it is not empty. 
+	 * @param calEvent
+	 */
 	private static void insertEvent(CalendarEvent calEvent) {
 		if(events.isEmpty()) {
 			events.add(calEvent);
 			System.out.println("Added event " + calEvent.getTitle());
 			return;
+		}else
+		{
+			events.add(calEvent);
+			Collections.sort(events);
+			
 		}
-		int i = 0;
-		while(calEvent.compareTo(events.get(i)) < 0)
-			++i;
-		events.add(i, calEvent);
-		System.out.println("Added event " + calEvent.getTitle());
+	
+	
+		
 	}
 	
 	/**
