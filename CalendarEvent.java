@@ -6,7 +6,7 @@ public class CalendarEvent implements Comparable<CalendarEvent>{
 	private String title;
 	private Date eventStart;
 	private Date eventEnd;
-	private int eventType;
+	private EventType eventType;
 	private RepeatType repeat; 
 	
 	/*private LinkedList eventType;//0- Unlabled 1-Private 2- work 3- holiday
@@ -17,17 +17,17 @@ public class CalendarEvent implements Comparable<CalendarEvent>{
 		title = "New Event";
 		eventStart = new Date();
 		eventEnd = new Date();
-		eventType = 0; 
+		eventType = EventType.UNLABLED;
 		repeat = RepeatType.NO_REPEAT;
 	}
 	
-	public CalendarEvent(String t, int category)
+	public CalendarEvent(String t, EventType et)
 	{
 		// here we are looking if the category is in the linked list if it is then we do nothing and simply set name
 		// else we have to add the category to the linked list structure and set the event's category type to it. 
 		title = t;
 		//eventStart = d;
-		eventType = category;
+		eventType = et;
 		/*for(int count =0; count <= eventType.size();count++)
 	{
 		String comparer = eventType.get(count);
@@ -62,7 +62,7 @@ public class CalendarEvent implements Comparable<CalendarEvent>{
 		this.title = new_title;
 	}
 	
-	public int getEventType()
+	public EventType getEventType()
 	{
 		
 		return this.eventType;

@@ -25,7 +25,7 @@ public class EventManager {
 	 */
 	public static CalendarEvent createEvent( Date start, Date end)
 	{
-		CalendarEvent calEvent = new CalendarEvent("New Event", 0);
+		CalendarEvent calEvent = new CalendarEvent("New Event", EventType.UNLABLED);
 		calEvent.setStart(start);
 		calEvent.setEnd(end);
 		insertEvent(calEvent);
@@ -39,7 +39,7 @@ public class EventManager {
 	 */
 	public static CalendarEvent createEvent(String title, Date start, Date end)
 	{
-		CalendarEvent calEvent = new CalendarEvent(title, 0);
+		CalendarEvent calEvent = new CalendarEvent(title, EventType.UNLABLED);
 		calEvent.setStart(start);
 		calEvent.setEnd(end);
 		insertEvent(calEvent);
@@ -54,9 +54,9 @@ public class EventManager {
 	 * @param flag
 	 * @return event with specified title, date, and type. 
 	 */
-	public static CalendarEvent createEvent(String title, Date start, Date end, int flag)
+	public static CalendarEvent createEvent(String title, Date start, Date end, EventType et)
 	{
-		CalendarEvent calEvent = new CalendarEvent(title, flag);
+		CalendarEvent calEvent = new CalendarEvent(title, et);
 		calEvent.setStart(start);
 		calEvent.setEnd(end);
 		insertEvent(calEvent);
