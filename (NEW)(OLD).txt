@@ -1,0 +1,4 @@
+The old files (marked (OLD)) worked well in automatically setting up the calendar, however, 
+changing it beyond that proved dificult, especially for events, so I tried to remake the whole thing.  
+As you can see, it is not quite complete, but making changes to it should be easier now.
+I kept the old files in case we find a way to salvage them, but till then, I will be working on the (NEW) ones.
