@@ -98,6 +98,7 @@ public class EventManager {
 		}else
 		{
 			events.add(calEvent);
+			System.out.println("Added event " + calEvent.getTitle());
 			Collections.sort(events);
 			
 		}
