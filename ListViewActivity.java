@@ -1,3 +1,5 @@
+// list view activity
+
 package com.example.lee.calendar;
 
 import java.util.ArrayList;

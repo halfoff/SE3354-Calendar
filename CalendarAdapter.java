@@ -1,3 +1,5 @@
+//calendar adapter
+
 package com.example.lee.calendar;
 
 import java.text.DateFormat;
@@ -37,7 +39,9 @@ public class CalendarAdapter extends BaseAdapter
     private ArrayList<String> items;
     public static List<String> day_string;
     private View previousView;
-    public ArrayList<CalendarCollect>  date_collection_arr;
+    public ArrayList<CalendarCollect>  date_collection_arr= new ArrayList<CalendarCollect>();
+    public ArrayList<Integer> first = new ArrayList<Integer>();
+    int l = first.size();
     public CalendarAdapter(Context context, GregorianCalendar monthCalendar,ArrayList<CalendarCollect> date_collection_arr)
     {
         this.date_collection_arr = date_collection_arr;

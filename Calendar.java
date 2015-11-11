@@ -1,3 +1,5 @@
+//calendar
+
 package com.example.lee.calendar;
 
 import java.util.GregorianCalendar;
@@ -13,8 +15,8 @@ import android.widget.TextView;
 
 public class Calendar extends Activity
 {
-    public GregorianCalendar calendar_month;
-    public GregorianCalendar calendar_month_clone;
+    public GregorianCalendar calendar_month= new GregorianCalendar();
+    public GregorianCalendar calendar_month_clone = new GregorianCalendar() ;
     private CalendarAdapter calendar_adapter;
     private TextView tv_month;
 
@@ -25,9 +27,8 @@ public class Calendar extends Activity
         setContentView(R.layout.activity_calendar);
 
         tv_month = (TextView) findViewById(R.id.tv_month);
-        calendar_month = (GregorianCalendar) GregorianCalendar.getInstance();
         tv_month.setText(android.text.format.DateFormat.format("mmmm yyyy", calendar_month));
-
+        calendar_month = (GregorianCalendar) GregorianCalendar.getInstance();
         calendar_month_clone = (GregorianCalendar) calendar_month.clone();
         calendar_adapter = new CalendarAdapter(this, calendar_month,CalendarCollect.date_collection_arr);
 
@@ -109,4 +110,3 @@ public class Calendar extends Activity
         tv_month.setText(android.text.format.DateFormat.format("mmmm yyyy", calendar_month));
     }
 }
-
