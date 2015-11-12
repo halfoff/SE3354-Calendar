@@ -1,9 +1,8 @@
-//calendar
-
 package com.example.lee.calendar;
 
 import java.util.GregorianCalendar;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,15 +18,17 @@ public class Calendar extends Activity
     public GregorianCalendar calendar_month_clone = new GregorianCalendar() ;
     private CalendarAdapter calendar_adapter;
     private TextView tv_month;
+    private Intent currentIntent;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
-
+        EventManager.init();
         tv_month = (TextView) findViewById(R.id.tv_month);
-        tv_month.setText(android.text.format.DateFormat.format("mmmm yyyy", calendar_month));
+        tv_month.setText(android.text.format.DateFormat.format("MM yyyy", calendar_month));
         calendar_month = (GregorianCalendar) GregorianCalendar.getInstance();
         calendar_month_clone = (GregorianCalendar) calendar_month.clone();
         calendar_adapter = new CalendarAdapter(this, calendar_month,CalendarCollect.date_collection_arr);
@@ -38,7 +39,8 @@ public class Calendar extends Activity
             @Override
             public void onClick(View view)
             {
-                setPreviousMonth();
+
+               setPreviousMonth();
                 refreshCalendar();
             }
         });
@@ -67,16 +69,19 @@ public class Calendar extends Activity
                 int gridValue = Integer.parseInt(gridValueString);
                 if ((gridValue > 10) && (position < 8))
                 {
+
                     setPreviousMonth();
                     refreshCalendar();
                 }
                 else if ((gridValue < 7) && (position > 28))
                 {
+
                     setNextMonth();
                     refreshCalendar();
                 }
                 ((CalendarAdapter) parent.getAdapter()).setSelected(view,position);
                 ((CalendarAdapter) parent.getAdapter()).getPositionList(selectedGridDate, Calendar.this);
+                startActivity(new Intent(Calendar.this, ListViewActivity.class));
             }
         });
     }
@@ -107,6 +112,7 @@ public class Calendar extends Activity
     {
         calendar_adapter.refreshDays();
         calendar_adapter.notifyDataSetChanged();
-        tv_month.setText(android.text.format.DateFormat.format("mmmm yyyy", calendar_month));
+        tv_month.setText(android.text.format.DateFormat.format("MM yyyy", calendar_month));
     }
 }
+

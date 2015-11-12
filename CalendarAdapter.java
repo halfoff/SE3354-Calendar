@@ -1,5 +1,3 @@
-//calendar adapter
-
 package com.example.lee.calendar;
 
 import java.text.DateFormat;
@@ -12,6 +10,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +18,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import static android.support.v4.app.ActivityCompat.startActivity;
 
 public class CalendarAdapter extends BaseAdapter
 {
@@ -52,7 +53,7 @@ public class CalendarAdapter extends BaseAdapter
         month.set(GregorianCalendar.DAY_OF_MONTH, 1);
         Locale.setDefault(Locale.US);
         this.items = new ArrayList<String>();
-        dateFormat = new SimpleDateFormat("yyyy-mm-dd", Locale.US);
+        dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
         currentDateString = dateFormat.format(selectedDate.getTime());
         refreshDays();
     }
@@ -158,6 +159,8 @@ public class CalendarAdapter extends BaseAdapter
 
         return view;
     }
+
+
 
     public void refreshDays()
     {

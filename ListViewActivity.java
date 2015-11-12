@@ -1,5 +1,3 @@
-// list view activity
-
 package com.example.lee.calendar;
 
 import java.util.ArrayList;
@@ -23,7 +21,7 @@ public class ListViewActivity extends Activity implements OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view);
         CalendarCollect.date_collection_arr=new ArrayList<CalendarCollect>();
-        CalendarCollect.date_collection_arr.add(new CalendarCollect("yyyy-mm-dd","Event"));
+        CalendarCollect.date_collection_arr.add(new CalendarCollect("yyyy-MM-dd","Event"));
         getWidget();
     }
 

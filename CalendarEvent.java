@@ -1,10 +1,12 @@
+package com.example.lee.calendar;
+
 import java.util.Date;
 import java.util.Calendar;
 
 
 public class CalendarEvent implements Comparable<CalendarEvent>, java.io.Serializable{
 	
-	try{
+	/*try{
 // Serialize data object to a file
 ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("CalendarEvent.ser"));
 out.writeObject(object);
@@ -19,7 +21,7 @@ out.close();
 // Get the bytes of the serialized object
 byte[] buf = bos.toByteArray();
 } catch (IOException e) {
-}
+}*/
 
 /*
 this is for reading the file back 
