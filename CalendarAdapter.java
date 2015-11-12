@@ -211,8 +211,9 @@ public class CalendarAdapter extends BaseAdapter
             {
                 if (day_string.get(position).equals(date))
                 {
+                    //EventManager.addEvent(new CalendarEvent());
                     view.setBackgroundColor(Color.parseColor("#343434"));
-                    txt.setTextColor(Color.WHITE);
+                    txt.setTextColor(Color.RED);
                 }
             }
         }
