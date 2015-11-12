@@ -106,7 +106,7 @@ public class Calendar extends Activity
     {
         calendar_adapter.refreshDays();
         calendar_adapter.notifyDataSetChanged();
-        tv_month.setText(android.text.format.DateFormat.format("mmmm yyyy", calendar_month));
+        tv_month.setText(android.text.format.DateFormat.format("MM yyyy", calendar_month));
     }
 }
 
