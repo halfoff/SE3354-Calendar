@@ -20,8 +20,11 @@ public class ListViewActivity extends Activity implements OnClickListener
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view);
+        Bundle extra = getIntent().getExtras();
+        String dateSelect = extra.getString("DateSelect");
+       // int position = EventManager.getLastIndexAdded();
         CalendarCollect.date_collection_arr=new ArrayList<CalendarCollect>();
-        CalendarCollect.date_collection_arr.add(new CalendarCollect("yyyy-MM-dd","Event"));
+        CalendarCollect.date_collection_arr.add(new CalendarCollect(dateSelect,"Event"));
         getWidget();
     }
 
@@ -41,7 +44,8 @@ public class ListViewActivity extends Activity implements OnClickListener
         switch (view.getId())
         {
             case R.id.btn_calender:
-                startActivity(new Intent(ListViewActivity.this,Calendar.class));
+                this.finish();
+                //startActivity(new Intent(ListViewActivity.this,Calendar.class));
                 break;
             default:
                 break;
