@@ -2,6 +2,7 @@ package com.example.lee.calendar;
 
 import java.util.Date;
 import java.util.Calendar;
+import java.text.SimpleDateFormat;
 
 
 public class CalendarEvent implements Comparable<CalendarEvent>, java.io.Serializable{
@@ -36,8 +37,8 @@ ObjectInputStream(door); MyObject x = new MyObject(); x =
 */
 
 	private String title;
-	private Calendar eventStart;
-	private Calendar eventEnd;
+	private Date eventStart;
+	private Date eventEnd;
 	private EventType eventType;
 	private RepeatType repeat; 
 	
@@ -47,12 +48,18 @@ ObjectInputStream(door); MyObject x = new MyObject(); x =
 	public CalendarEvent()
 	{
 		title = "New Event";
-		eventStart = Calendar.getInstance();
-		eventEnd = Calendar.getInstance();
+		eventStart = new Date();
+		eventEnd = new Date();
 		eventType = EventType.UNLABLED;
 		repeat = RepeatType.NO_REPEAT;
 	}
-	
+
+	public CalendarEvent(String t) {
+		this.title = t;
+		repeat = RepeatType.NO_REPEAT;
+		eventType = EventType.UNLABLED;
+	}
+
 	public CalendarEvent(String t, EventType et)
 	{
 		// here we are looking if the category is in the linked list if it is then we do nothing and simply set name
@@ -75,7 +82,7 @@ ObjectInputStream(door); MyObject x = new MyObject(); x =
 	}
 
 	public String toString() {
-		return "Title: " + this.title + " Date: " + this.eventStart.getTime().toString();
+		return "Title: " + this.title + " Date: " + this.eventStart.toString();
 	}
 
 	public RepeatType getRepeat()
@@ -108,17 +115,26 @@ ObjectInputStream(door); MyObject x = new MyObject(); x =
 		this.eventType = new_category;
 	}
 	*/
-	public void setStart(int year, int month, int date) {
-		Calendar cal = Calendar.getInstance();
-		cal.set(year, month, date);
-		this.eventStart = cal;
+	public void setStart(String date) {
+		//Calendar cal = Calendar.getInstance();
+		//cal.set(year, month, date);
+		//this.eventStart = cal;
+
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		Date d;
+		try {
+			d = dateFormat.parse(date);
+			setStart(d);
+		} catch(java.text.ParseException e) {
+
+		}
 	}
 	
-	public void setStart(Calendar new_cal) {
+	public void setStart(Date new_cal) {
 		this.eventStart = new_cal;
 	}
 	
-	public void setEnd(Calendar new_end) {
+	public void setEnd(Date new_end) {
 		this.eventEnd = new_end;
 	}
 
@@ -141,11 +157,11 @@ ObjectInputStream(door); MyObject x = new MyObject(); x =
 
 
 
-	public Calendar getEnd()
+	public Date getEnd()
 	{
 		return this.eventEnd;
 	}
-	public Calendar getStart() {
+	public Date getStart() {
 			// TODO Auto-generated method stub
 			return this.eventStart;
 	}
