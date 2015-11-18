@@ -30,11 +30,6 @@ public class Calendar extends Activity
         tv_month = (TextView) findViewById(R.id.tv_month);
         tv_month.setText(android.text.format.DateFormat.format("MM yyyy", calendar_month));
         calendar_month = (GregorianCalendar) GregorianCalendar.getInstance();
-<<<<<<< HEAD
-=======
-        tv_month.setText(android.text.format.DateFormat.format("MM yyyy", calendar_month));
-
->>>>>>> origin/AndroidDisplay
         calendar_month_clone = (GregorianCalendar) calendar_month.clone();
         calendar_adapter = new CalendarAdapter(this, calendar_month,CalendarCollect.date_collection_arr);
 
@@ -84,9 +79,11 @@ public class Calendar extends Activity
                     setNextMonth();
                     refreshCalendar();
                 }
-                ((CalendarAdapter) parent.getAdapter()).setSelected(view,position);
+                ((CalendarAdapter) parent.getAdapter()).setSelected(view, position);
                 ((CalendarAdapter) parent.getAdapter()).getPositionList(selectedGridDate, Calendar.this);
-                startActivity(new Intent(Calendar.this, ListViewActivity.class));
+                Intent listViewIntent = new Intent(Calendar.this, ListViewActivity.class);
+                listViewIntent.putExtra("DateSelect",selectedGridDate);
+                startActivity(listViewIntent);
             }
         });
     }
