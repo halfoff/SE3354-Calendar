@@ -35,6 +35,7 @@
         android:orientation="vertical"
         android:padding="15dp" >
 
+
         <Button
             android:id="@+id/btn_calender"
             android:layout_width="wrap_content"
@@ -42,6 +43,19 @@
             android:background="#00CC00"
             android:padding="10dp"
             android:text="Calendar"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+        <Space
+            android:layout_width="1dp"
+            android:layout_height="5dp" />
+        <Button
+            android:id="@+id/btn_addEvent"
+            android:layout_width="100px"
+            android:layout_height="100px"
+            android:background="#00CC00"
+            android:padding="10dp"
+            android:text="+"
             android:textColor="#FFFFFF"
             android:textSize="22sp"
             android:textStyle="bold" />

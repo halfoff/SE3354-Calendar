@@ -1,12 +1,14 @@
 package com.example.lee.calendar;
 
 import android.app.Activity;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TimePicker;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -23,17 +25,19 @@ public class AddEventActivity extends Activity implements OnClickListener {
     protected Button btn_Create;
     protected Button btn_Cancel;
     protected EditText txt_Title;
-    protected EditText txt_Time;
+    protected TimePicker timePicker;
+
     private int indexOfAdd;
     private String eventTitle;
-    private String eventTime;
+    private int eventTimeHR;
+    private int eventTimeMIN;
     private String eventDate;
+    private Bundle extra;
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_layout);
-        Bundle extra =getIntent().getExtras();
-        eventDate = extra.getString("DateSelect");
+        extra =getIntent().getExtras();
         getWidget();
 
 
@@ -43,8 +47,11 @@ public class AddEventActivity extends Activity implements OnClickListener {
     {
         btn_Create = (Button)   findViewById(R.id.btn_createEvent);
         btn_Cancel = (Button)   findViewById(R.id.btn_Cancel);
+        btn_Cancel.setOnClickListener(this);
+        btn_Create.setOnClickListener(this);
+        timePicker = (TimePicker) findViewById(R.id.timePicker);
+
         txt_Title = (EditText)  findViewById(R.id.txt_editTitle);
-        txt_Time = (EditText)   findViewById(R.id.txt_editTime);
 
 
 
@@ -57,26 +64,28 @@ public class AddEventActivity extends Activity implements OnClickListener {
         switch (view.getId())
         {
             case R.id.btn_createEvent:
-                eventTitle = txt_Title.getText().toString();
-                eventTime = txt_Time.getText().toString();
+               eventTitle = txt_Title.getText().toString();
+                eventDate = extra.getString("DateSelect");
+
                 CalendarEvent tmpEvent= new CalendarEvent();
-                DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-                try {
-                    Date tmpDate            =df.parse(eventDate + " " + eventTime);
-                    tmpEvent.setStart(tmpDate);
-                    tmpEvent.setTitle(eventTitle);
-                }catch(ParseException e)
-                {
-                    System.out.println("Wrong format");
-                }
+                eventTimeHR = timePicker.getCurrentHour();
+                eventTimeMIN = timePicker.getCurrentMinute();
+
+
+                EventManager.addEvent(tmpEvent);
+                System.out.println("Event Added");
+
                 //indexOfAdd=EventManager.addEvent(new CalendarEvent());
                 //System.out.println("Event Added "+EventManager.getEvent(indexOfAdd).toString());
                 this.finish();
                 break;
             case R.id.btn_Cancel:
+                System.out.println("Event cancled");
                 this.finish();
                 break;
+
             default:
+                System.out.println("How did you default");
                 break;
         }
     }
