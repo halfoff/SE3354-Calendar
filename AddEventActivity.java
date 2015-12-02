@@ -47,6 +47,8 @@ public class AddEventActivity extends Activity implements OnClickListener {
     {
         btn_Create = (Button)   findViewById(R.id.btn_createEvent);
         btn_Cancel = (Button)   findViewById(R.id.btn_Cancel);
+        btn_Cancel.setOnClickListener(this);
+        btn_Create.setOnClickListener(this);
         timePicker = (TimePicker) findViewById(R.id.timePicker);
 
         txt_Title = (EditText)  findViewById(R.id.txt_editTitle);
