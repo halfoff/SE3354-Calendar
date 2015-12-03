@@ -80,21 +80,21 @@ public class Calendar extends Activity
         });
 
         //Testing
-        CalendarEvent event1 = new CalendarEvent("Hello World");
-        event1.setStart("11/11/2015");
-        CalendarEvent event2 = new CalendarEvent("Hello World again");
-        event2.setStart("11/11/2015");
-        CalendarEvent event3 = new CalendarEvent("Third event");
-        event3.setStart("11/13/2015");
-        CalendarEvent event4 = new CalendarEvent("Fourth event");
-        event4.setStart("11/16/2015");
-        CalendarEvent event5 = new CalendarEvent("Fifth event");
-        event5.setStart("11/18/2015");
-        EventManager.addEvent(event1);
-        EventManager.addEvent(event2);
-        EventManager.addEvent(event3);
-        EventManager.addEvent(event4);
-        EventManager.addEvent(event5);
+//        CalendarEvent event1 = new CalendarEvent("Hello World");
+//        event1.setStart("11/11/2015");
+//        CalendarEvent event2 = new CalendarEvent("Hello World again");
+//        event2.setStart("11/11/2015");
+//        CalendarEvent event3 = new CalendarEvent("Third event");
+//        event3.setStart("11/13/2015");
+//        CalendarEvent event4 = new CalendarEvent("Fourth event");
+//        event4.setStart("11/16/2015");
+//        CalendarEvent event5 = new CalendarEvent("Fifth event");
+//        event5.setStart("11/18/2015");
+//        EventManager.addEvent(event1);
+//        EventManager.addEvent(event2);
+//        EventManager.addEvent(event3);
+//        EventManager.addEvent(event4);
+//        EventManager.addEvent(event5);
     }
     protected void setPreviousMonth()
     {

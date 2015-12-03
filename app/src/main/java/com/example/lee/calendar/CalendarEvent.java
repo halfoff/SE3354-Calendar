@@ -120,7 +120,8 @@ ObjectInputStream(door); MyObject x = new MyObject(); x =
 		//cal.set(year, month, date);
 		//this.eventStart = cal;
 
-		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		//SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date d;
 		try {
 			d = dateFormat.parse(date);

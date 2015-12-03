@@ -67,9 +67,11 @@ public class AddEventActivity extends Activity implements OnClickListener {
                eventTitle = txt_Title.getText().toString();
                 eventDate = extra.getString("DateSelect");
 
-                CalendarEvent tmpEvent= new CalendarEvent();
+                CalendarEvent tmpEvent= new CalendarEvent(eventTitle);
+
                 eventTimeHR = timePicker.getCurrentHour();
                 eventTimeMIN = timePicker.getCurrentMinute();
+                tmpEvent.setStart(eventDate);
 
 
                 EventManager.addEvent(tmpEvent);
