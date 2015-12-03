@@ -221,7 +221,7 @@ public class CalendarAdapter extends BaseAdapter
 
     public void getPositionList(String date,final Activity act)
     {
-        int length = CalendarCollect.date_collection_arr.size();
+       /* int length = CalendarCollect.date_collection_arr.size();
         for (int i = 0; i < length; i++)
         {
             CalendarCollect calendar_collection = CalendarCollect.date_collection_arr.get(i);
@@ -242,6 +242,6 @@ public class CalendarAdapter extends BaseAdapter
             else
             {
             }
-        }
+        }*/
     }
 }
