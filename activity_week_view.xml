@@ -1,0 +1,208 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.lee.calendar.WeekActivity" >
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#0000FF"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp" >
+
+        <FrameLayout
+            android:layout_width="45dp"
+            android:layout_height="45dp" >
+
+            <ImageButton
+                android:id="@+id/ib_prevWeek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="2dp"/>
+
+        </FrameLayout>
+        
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/tv_weekOf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="1dip"
+                android:gravity="center"
+                android:text="Week Of"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+        </FrameLayout>
+        
+        <FrameLayout
+            android:layout_width="45dp"
+            android:layout_height="45dp" >
+
+            <ImageButton
+                android:id="@+id/ib_nextWeek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="2dp"/>
+
+        </FrameLayout>
+        
+
+    </LinearLayout>
+
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingTop="8dp"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btn_sunday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#0088FF"
+            android:padding="6dp"
+            android:text="    Sunday    "
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </TableRow>
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:paddingTop="8dp"
+            android:gravity="center">
+            <Button
+                android:id="@+id/btn_monday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#0088FF"
+                android:padding="8dp"
+                android:text="   Monday   "
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:paddingTop="8dp"
+            android:gravity="center">
+            <Button
+                android:id="@+id/btn_tuesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#0088FF"
+                android:padding="6dp"
+                android:text="   Tuesday   "
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:paddingTop="8dp"
+            android:gravity="center">
+            <Button
+                android:id="@+id/btn_wednesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#0088FF"
+                android:padding="6dp"
+                android:text="Wednesday"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:paddingTop="6dp"
+            android:gravity="center">
+            <Button
+                android:id="@+id/btn_thursday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#0088FF"
+                android:padding="8dp"
+                android:text=" Thursday "
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:paddingTop="8dp"
+            android:gravity="center">
+            <Button
+                android:id="@+id/btn_friday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#0088FF"
+                android:padding="6dp"
+                android:text="     Friday     "
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:paddingTop="8dp"
+            android:gravity="center">
+            <Button
+                android:id="@+id/btn_saturday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#0088FF"
+                android:padding="8dp"
+                android:text=" Saturday "
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+    </LinearLayout>
