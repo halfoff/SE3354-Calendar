@@ -16,11 +16,16 @@ public class EventManager {
 	
 	static ArrayList<CalendarEvent> events;
 	static String status;
+	static int lastIndexAdded;
 	
 	public static void init() {
 		events = new ArrayList<CalendarEvent>();
 		status = "";
 	}
+
+	public static int getLastIndexAdded()
+	{return lastIndexAdded;}
+
 	
 	/**
 	 * 
@@ -74,7 +79,6 @@ public class EventManager {
 	
 	/**
 	 * 
-	 * @param calEvent
 	 * @return index where calEvent is located
 	 */
 	public static int addEvent(CalendarEvent calEvent) {
@@ -177,6 +181,7 @@ public class EventManager {
 	 * @return status with detailed information
 	 */
 	public static String getStatus() {
+
 		return status;
 	}
 	

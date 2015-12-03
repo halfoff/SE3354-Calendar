@@ -14,6 +14,8 @@ public class ListViewActivity extends Activity implements OnClickListener
     private ListView lv_android;
     private AndroidAdapter list_adapter;
     private Button btn_calender;
+    private Button btn_addEvent;
+    private String dateSelect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -21,7 +23,7 @@ public class ListViewActivity extends Activity implements OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view);
         Bundle extra = getIntent().getExtras();
-        String dateSelect = extra.getString("DateSelect");
+        dateSelect = extra.getString("DateSelect");
        // int position = EventManager.getLastIndexAdded();
         CalendarCollect.date_collection_arr=new ArrayList<CalendarCollect>();
         CalendarCollect.date_collection_arr.add(new CalendarCollect(dateSelect,"Event"));
@@ -31,7 +33,9 @@ public class ListViewActivity extends Activity implements OnClickListener
     public void getWidget()
     {
         btn_calender = (Button) findViewById(R.id.btn_calender);
+        btn_addEvent = (Button)  findViewById(R.id.btn_addEvent);
         btn_calender.setOnClickListener(this);
+        btn_addEvent.setOnClickListener(this);
         lv_android = (ListView) findViewById(R.id.lv_android);
         list_adapter = new AndroidAdapter(ListViewActivity.this,R.layout.list_item, CalendarCollect.date_collection_arr);
         lv_android.setAdapter(list_adapter);
@@ -45,8 +49,14 @@ public class ListViewActivity extends Activity implements OnClickListener
         {
             case R.id.btn_calender:
                 this.finish();
-                //startActivity(new Intent(ListViewActivity.this,Calendar.class));
+
                 break;
+            case R.id.btn_addEvent:
+                Intent addEventIntent = new Intent(ListViewActivity.this, AddEventActivity.class);
+                addEventIntent.putExtra("DateSelect",dateSelect);
+                startActivity(addEventIntent);
+                break;
+                //TODO:Add Button Event Actions
             default:
                 break;
         }
