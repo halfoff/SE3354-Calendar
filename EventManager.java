@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.ArrayList;
+import java.text.SimpleDateFormat;
 
 /**
  * 
@@ -111,6 +112,24 @@ public class EventManager {
 			
 		return events.get(index);
 	}
+
+	public static ArrayList<CalendarEvent> getEventsOnDate(String date) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date d = new Date();
+		try {
+			d = dateFormat.parse(date);
+			ArrayList<CalendarEvent> events_on_date = new ArrayList<CalendarEvent>();
+			for(CalendarEvent calEvent : events) {
+				//System.out.println(d.toString() + " - " + calEvent.getStart().toString());
+				if(calEvent.getStart().equals(d))
+					events_on_date.add(calEvent);
+			}
+			return events_on_date;
+		} catch (java.text.ParseException e) {
+			System.out.println("Parse Exception");
+		}
+		return null;
+	}
 	
 	/**
 	 * Adds calEvent to the Arraylist. Sorts arrayList if it is not empty. 
@@ -125,7 +144,7 @@ public class EventManager {
 		{
 			events.add(calEvent);
 			status = "Added event " + calEvent.getTitle() + "events sorted.";
-			Collections.sort(events);
+			//Collections.sort(events);
 			
 		}
 	
