@@ -24,10 +24,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="2dp"/>
+                android:layout_margin="2dp"
+                android:background="@drawable/Left"/>
 
         </FrameLayout>
-        
+
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,7 +47,7 @@
                 android:textStyle="bold" />
 
         </FrameLayout>
-        
+
         <FrameLayout
             android:layout_width="45dp"
             android:layout_height="45dp" >
@@ -56,10 +57,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="2dp"/>
+                android:layout_margin="2dp"
+                android:background="@drawable/Right"/>
 
         </FrameLayout>
-        
+
 
     </LinearLayout>
 
@@ -206,3 +208,4 @@
         </TableRow>
 
     </LinearLayout>
+
