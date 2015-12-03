@@ -230,7 +230,7 @@ public class CalendarAdapter extends BaseAdapter
             if (date.equals(event_date))
             {
                 Toast.makeText(context, "Event: " + event_date, Toast.LENGTH_LONG).show();
-                new AlertDialog.Builder(context).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Date: "+event_date).setMessage("Event: "+event_message).setPositiveButton("OK",new android.content.DialogInterface.OnClickListener()
+                new AlertDialog.Builder(context).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Date: "+event_date).setMessage("Event: "+event_message).setPositiveButton("OK",new DialogInterface.OnClickListener()
                 {
                     public void onClick(DialogInterface dialog, int which)
                     {
