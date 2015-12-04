@@ -40,7 +40,8 @@ ObjectInputStream(door); MyObject x = new MyObject(); x =
 	private Date eventStart;
 	private Date eventEnd;
 	private EventType eventType;
-	private RepeatType repeat; 
+	private RepeatType repeat;
+	private String startTime, endTime;
 	
 	/*private LinkedList eventType;//0- Unlabled 1-Private 2- work 3- holiday
 	String eventTypename;*/
@@ -50,6 +51,8 @@ ObjectInputStream(door); MyObject x = new MyObject(); x =
 		title = "New Event";
 		eventStart = new Date();
 		eventEnd = new Date();
+		startTime = "12:00";
+		endTime = "01:00";
 		eventType = EventType.UNLABLED;
 		repeat = RepeatType.NO_REPEAT;
 	}
@@ -109,12 +112,20 @@ ObjectInputStream(door); MyObject x = new MyObject(); x =
 		
 		return this.eventType;
 	}
-	/*
-	public int setEventType(){
+
+	public void setEventType(EventType eT){
 		
-		this.eventType = new_category;
+		this.eventType = eT;
 	}
-	*/
+	public void setStartTime(int hour, int min)
+	{
+		startTime = hour +":"+ min + "";
+	}
+	public void setEndTime(int hour, int min)
+	{
+		endTime = hour +":"+ min + "";
+	}
+
 	public void setStart(String date) {
 		//Calendar cal = Calendar.getInstance();
 		//cal.set(year, month, date);

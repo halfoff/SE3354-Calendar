@@ -100,6 +100,10 @@ public class AddEventActivity extends Activity implements OnClickListener {
                 endTimeHR = endTimePicker.getCurrentHour();
                 endTimeMIN = endTimePicker.getCurrentMinute();
                 tmpEvent.setStart(eventDate);
+                tmpEvent.setStartTime(eventTimeHR, eventTimeMIN);
+                tmpEvent.setEndTime(eventTimeHR,eventTimeMIN);
+                tmpEvent.setEventType(eType);
+                
 
 
                 EventManager.addEvent(tmpEvent);
