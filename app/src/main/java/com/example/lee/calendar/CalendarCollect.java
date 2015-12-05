@@ -17,7 +17,7 @@ public class CalendarCollect
         } else {
             for(CalendarEvent calEvent : events_on_date) {
                 //TODO: formatting for individual events
-                this.event_message += calEvent.getTitle() + "\n";
+                this.event_message += calEvent.getTitle() +" " +calEvent.getStartTime()+" - "+calEvent.getEndTime()+ "\n";
             }
         }
 

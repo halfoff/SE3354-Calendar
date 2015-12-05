@@ -22,6 +22,8 @@
         </activity>
         <activity android:name="com.example.lee.calendar.AddEventActivity"
             android:label="AddEventActivity"></activity>
+        <activity android:name="com.example.lee.calendar.WeekViewActivity"
+            android:label="WeekViewActivity"></activity>
     </application>
 
 </manifest>

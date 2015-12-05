@@ -125,6 +125,13 @@ ObjectInputStream(door); MyObject x = new MyObject(); x =
 	{
 		endTime = hour +":"+ min + "";
 	}
+	public String getStartTime(){
+		return startTime;
+	}
+	public String getEndTime()
+	{
+		return endTime;
+	}
 
 	public void setStart(String date) {
 		//Calendar cal = Calendar.getInstance();

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -28,11 +29,13 @@ public class Calendar extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
         EventManager.init();
+
         tv_month = (TextView) findViewById(R.id.tv_month);
         tv_month.setText(android.text.format.DateFormat.format("MM yyyy", calendar_month));
         calendar_month = (GregorianCalendar) GregorianCalendar.getInstance();
         calendar_month_clone = (GregorianCalendar) calendar_month.clone();
         calendar_adapter = new CalendarAdapter(this, calendar_month,CalendarCollect.date_collection_arr);
+
 
         ImageButton previous = (ImageButton) findViewById(R.id.ib_prev);
         previous.setOnClickListener(new OnClickListener() {
@@ -76,6 +79,16 @@ public class Calendar extends Activity
                 Intent listViewIntent = new Intent(Calendar.this, ListViewActivity.class);
                 listViewIntent.putExtra("DateSelect", selectedGridDate);
                 startActivity(listViewIntent);
+
+
+            }
+        });
+        Button weekViewBtn = (Button) findViewById(R.id.weekViewButton);
+        weekViewBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent weekViewActivityIntent = new Intent(Calendar.this, WeekViewActivity.class);
+                startActivity(weekViewActivityIntent);
             }
         });
 
