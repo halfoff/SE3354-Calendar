@@ -46,3 +46,10 @@ public class WeekViewActivity extends Activity implements OnClickListener {
 
 
 }
+/*I made the viewHolders in the xml file week_item named tv_weekDay and tv_weekEvent, so a ViewHolder will have to be made for 
+TextView tv_weekDay;
+TextView tv_weekEvent;
+also, the forward and previous buttons in the xml activity week view are names ib_prevWeek and ib_nextWeek, so buttons will have to be made for those.
+tv_weekOf needs a ViewHolder to simply state the range of days.  Set the string equal to current day, and when the loop = 6 in WeekViewActivity.
+Finally, the loop should read into lv_weekly reading the day, from the date format, and the events.
+*/
