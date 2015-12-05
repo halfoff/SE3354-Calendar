@@ -109,6 +109,12 @@ public class EventManager {
 		return events.get(index);
 	}
 
+	/**
+	 * Date is a string that is expected in yyy-MM-dd format.
+	 * the method will parse the date and return an arraylist of dates.
+	 * @param date
+	 * @return
+	 */
 	public static ArrayList<CalendarEvent> getEventsOnDate(String date) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date d = new Date();
