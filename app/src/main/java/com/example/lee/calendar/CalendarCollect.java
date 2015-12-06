@@ -2,6 +2,9 @@ package com.example.lee.calendar;
 
 import java.util.ArrayList;
 
+/**
+ * Class used to properly display events and text in ListViewActivity
+ */
 public class CalendarCollect
 {
     public String date = "";

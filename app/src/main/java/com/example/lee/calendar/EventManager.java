@@ -22,55 +22,9 @@ public class EventManager {
 		status = "";
 	}
 	
-	/**
-	 * 
-	 * @param d date for event
-	 * @return an event with with a given date. 
-	 */
-	/*
-	public static CalendarEvent createEvent( Calendar start, Date end)
-	{
-		CalendarEvent calEvent = new CalendarEvent("New Event", EventType.UNLABLED);
-		calEvent.setStart(start);
-		calEvent.setEnd(end);
-		insertEvent(calEvent);
-		return calEvent;
-	}
-	*/
-	/**
-	 * 
-	 * @param title
-	 * @param d
-	 * @return create event with specified title and date.
-	 */
-	/*
-	public static CalendarEvent createEvent(String title, Date start, Date end)
-	{
-		CalendarEvent calEvent = new CalendarEvent(title, EventType.UNLABLED);
-		calEvent.setStart(start);
-		calEvent.setEnd(end);
-		insertEvent(calEvent);
-		return calEvent;
-	}
-	*/
+
 	
-	/**
-	 * 
-	 * @param title
-	 * @param d
-	 * @param flag
-	 * @return event with specified title, date, and type. 
-	 */
-	/*
-	public static CalendarEvent createEvent(String title, Date start, Date end, EventType et)
-	{
-		CalendarEvent calEvent = new CalendarEvent(title, et);
-		calEvent.setStart(start);
-		calEvent.setEnd(end);
-		insertEvent(calEvent);
-		return calEvent;
-	}
-	*/
+
 	
 	/**
 	 * 
@@ -95,9 +49,9 @@ public class EventManager {
 	}
 	
 	/**
-	 * 
+	 * Gets event at index.
 	 * @param index
-	 * @return
+	 * @return returns event at Index
 	 */
 	public static CalendarEvent getEvent(int index) {
 		if(events.isEmpty())
@@ -113,7 +67,7 @@ public class EventManager {
 	 * Date is a string that is expected in yyy-MM-dd format.
 	 * the method will parse the date and return an arraylist of dates.
 	 * @param date
-	 * @return
+	 * @return an arraylist of dates
 	 */
 	public static ArrayList<CalendarEvent> getEventsOnDate(String date) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

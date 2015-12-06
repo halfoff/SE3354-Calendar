@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
+ * Activity for adding events.
  * Created by Jack on 11/11/2015.
  */
 
@@ -42,6 +43,8 @@ public class AddEventActivity extends Activity implements OnClickListener {
     private String eventDate;
     private Bundle extra;
     private EventType eType;
+
+
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -52,6 +55,9 @@ public class AddEventActivity extends Activity implements OnClickListener {
 
     }
 
+    /**
+     * initializes widgets.
+     */
     public void getWidget()
     {
         btn_Create = (Button)   findViewById(R.id.btn_createEvent);
@@ -65,7 +71,6 @@ public class AddEventActivity extends Activity implements OnClickListener {
         workEvent = (RadioButton)   findViewById(R.id.work);
         holidayEvent = (RadioButton)   findViewById(R.id.holiday);
         otherEvent = (RadioButton)   findViewById(R.id.other);
-
         txt_Title = (EditText)  findViewById(R.id.txt_editTitle);
 
 
@@ -73,6 +78,10 @@ public class AddEventActivity extends Activity implements OnClickListener {
     }
 
     @Override
+    /**
+     * Switch statement for different button presse. This also handles the category switch
+     *
+     */
     public void onClick(View view)
     {
         int selectedId = eventTypeGroup.getCheckedRadioButtonId();
@@ -107,20 +116,13 @@ public class AddEventActivity extends Activity implements OnClickListener {
 
 
                 EventManager.addEvent(tmpEvent);
-                Log.i("Event Added", tmpEvent.toString());
 
-                //indexOfAdd=EventManager.addEvent(new CalendarEvent());
-                //System.out.println("Event Added "+EventManager.getEvent(indexOfAdd).toString());
                 this.finish();
                 break;
             case R.id.btn_Cancel:
-                System.out.println("Event cancled");
                 this.finish();
                 break;
-
-
             default:
-                System.out.println("How did you default");
                 break;
         }
     }
