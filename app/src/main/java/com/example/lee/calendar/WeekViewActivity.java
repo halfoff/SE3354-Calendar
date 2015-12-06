@@ -37,6 +37,7 @@ public class WeekViewActivity extends Activity implements OnClickListener {
             eventsEachDay[i] = EventManager.getEventsOnDate(d);
             today.add(Calendar.DAY_OF_MONTH, 1);
         }
+        today.add(Calendar.DAY_OF_MONTH,-7);
         WeekCollect.date_collection_arr= new ArrayList<WeekCollect>();
         WeekCollect.date_collection_arr.add(new WeekCollect(eventsEachDay,today));
 
