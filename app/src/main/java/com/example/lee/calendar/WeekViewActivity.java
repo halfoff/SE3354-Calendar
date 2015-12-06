@@ -21,7 +21,7 @@ public class WeekViewActivity extends Activity implements OnClickListener {
     private Button btn_calendar;
     private ArrayList<CalendarEvent>[] eventsEachDay;//HAs the events for each day
     private ListView lv_weekly;
-    private AndroidAdapter list_adapter;
+    private WeekAdapter list_adapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +49,7 @@ public class WeekViewActivity extends Activity implements OnClickListener {
         btn_calendar = (Button) findViewById(R.id.btn_calenderReturn);
         btn_calendar.setOnClickListener(this);
         lv_weekly = (ListView)  findViewById(R.id.lv_weekly);
-        list_adapter = new AndroidAdapter(WeekViewActivity.this, R.layout.week_item,WeekCollect.date_collection_arr);
+        list_adapter = new WeekAdapter(WeekViewActivity.this, R.layout.week_item,WeekCollect.date_collection_arr);
         lv_weekly.setAdapter(list_adapter);
     }
 
