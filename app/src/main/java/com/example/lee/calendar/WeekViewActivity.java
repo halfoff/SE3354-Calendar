@@ -56,6 +56,7 @@ public class WeekViewActivity extends Activity implements OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_calenderReturn:
+
                 this.finish();
                 break;
             default:

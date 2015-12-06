@@ -25,7 +25,9 @@ public class WeekAdapter extends ArrayAdapter<WeekCollect> {
         this.context = context;
         this.values = values;
         this.resourceId = resourceId;
+        viewHolder = new ViewHolder();
     }
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent)
@@ -34,7 +36,7 @@ public class WeekAdapter extends ArrayAdapter<WeekCollect> {
         {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(resourceId, parent, false);
-            viewHolder = new ViewHolder();
+
             viewHolder.tv_weekDay = (TextView) convertView.findViewById(R.id.tv_weekDay);
             viewHolder.tv_weekEvent = (TextView) convertView.findViewById(R.id.tv_weekEvent);
             convertView.setTag(viewHolder);
@@ -43,11 +45,25 @@ public class WeekAdapter extends ArrayAdapter<WeekCollect> {
         {
             viewHolder = (ViewHolder) convertView.getTag();
         }
+        this.clearWeekEvent();
         WeekCollect list_obj=values.get(position);
         //viewHolder.tv_date.setText(list_obj.date);
-        viewHolder.tv_weekEvent.setText(list_obj.event_message);
+       // viewHolder.tv_weekEvent.setText(list_obj.event_message);
+        for(int i=0; i<list_obj.event_message.size();i++)
+        {
+            viewHolder.tv_weekEvent.append(list_obj.event_message.get(i));
+
+        }
         return convertView;
+
     }
+    public void clearWeekEvent()
+    {
+        viewHolder.tv_weekEvent.setText("");
+    }
+
+
+
     public class ViewHolder
     {
         TextView tv_weekEvent;
