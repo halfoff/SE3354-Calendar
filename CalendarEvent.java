@@ -1,10 +1,13 @@
+package com.example.lee.calendar;
+
 import java.util.Date;
 import java.util.Calendar;
+import java.text.SimpleDateFormat;
 
 
 public class CalendarEvent implements Comparable<CalendarEvent>, java.io.Serializable{
 	
-	try{
+	/*try{
 // Serialize data object to a file
 ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("CalendarEvent.ser"));
 out.writeObject(object);
@@ -19,7 +22,7 @@ out.close();
 // Get the bytes of the serialized object
 byte[] buf = bos.toByteArray();
 } catch (IOException e) {
-}
+}*/
 
 /*
 this is for reading the file back 
@@ -34,10 +37,11 @@ ObjectInputStream(door); MyObject x = new MyObject(); x =
 */
 
 	private String title;
-	private Calendar eventStart;
-	private Calendar eventEnd;
+	private Date eventStart;
+	private Date eventEnd;
 	private EventType eventType;
-	private RepeatType repeat; 
+	private RepeatType repeat;
+	private String startTime, endTime;
 	
 	/*private LinkedList eventType;//0- Unlabled 1-Private 2- work 3- holiday
 	String eventTypename;*/
@@ -45,12 +49,20 @@ ObjectInputStream(door); MyObject x = new MyObject(); x =
 	public CalendarEvent()
 	{
 		title = "New Event";
-		eventStart = Calendar.getInstance();
-		eventEnd = Calendar.getInstance();
+		eventStart = new Date();
+		eventEnd = new Date();
+		startTime = "12:00";
+		endTime = "01:00";
 		eventType = EventType.UNLABLED;
 		repeat = RepeatType.NO_REPEAT;
 	}
-	
+
+	public CalendarEvent(String t) {
+		this.title = t;
+		repeat = RepeatType.NO_REPEAT;
+		eventType = EventType.UNLABLED;
+	}
+
 	public CalendarEvent(String t, EventType et)
 	{
 		// here we are looking if the category is in the linked list if it is then we do nothing and simply set name
@@ -73,7 +85,7 @@ ObjectInputStream(door); MyObject x = new MyObject(); x =
 	}
 
 	public String toString() {
-		return "Title: " + this.title + " Date: " + this.eventStart.getTime().toString();
+		return "Title: " + this.title + " Date: " + this.eventStart.toString();
 	}
 
 	public RepeatType getRepeat()
@@ -100,23 +112,48 @@ ObjectInputStream(door); MyObject x = new MyObject(); x =
 		
 		return this.eventType;
 	}
-	/*
-	public int setEventType(){
+
+	public void setEventType(EventType eT){
 		
-		this.eventType = new_category;
+		this.eventType = eT;
 	}
-	*/
-	public void setStart(int year, int month, int date) {
-		Calendar cal = Calendar.getInstance();
-		cal.set(year, month, date);
-		this.eventStart = cal;
+	public void setStartTime(int hour, int min)
+	{
+		startTime = hour +":"+ min + "";
+	}
+	public void setEndTime(int hour, int min)
+	{
+		endTime = hour +":"+ min + "";
+	}
+	public String getStartTime(){
+		return startTime;
+	}
+	public String getEndTime()
+	{
+		return endTime;
+	}
+
+	public void setStart(String date) {
+		//Calendar cal = Calendar.getInstance();
+		//cal.set(year, month, date);
+		//this.eventStart = cal;
+
+		//SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date d;
+		try {
+			d = dateFormat.parse(date);
+			setStart(d);
+		} catch(java.text.ParseException e) {
+
+		}
 	}
 	
-	public void setStart(Calendar new_cal) {
+	public void setStart(Date new_cal) {
 		this.eventStart = new_cal;
 	}
 	
-	public void setEnd(Calendar new_end) {
+	public void setEnd(Date new_end) {
 		this.eventEnd = new_end;
 	}
 
@@ -139,11 +176,11 @@ ObjectInputStream(door); MyObject x = new MyObject(); x =
 
 
 
-	public Calendar getEnd()
+	public Date getEnd()
 	{
 		return this.eventEnd;
 	}
-	public Calendar getStart() {
+	public Date getStart() {
 			// TODO Auto-generated method stub
 			return this.eventStart;
 	}

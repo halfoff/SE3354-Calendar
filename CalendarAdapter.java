@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import static android.support.v4.app.ActivityCompat.startActivity;
 
 public class CalendarAdapter extends BaseAdapter
 {
@@ -37,7 +40,9 @@ public class CalendarAdapter extends BaseAdapter
     private ArrayList<String> items;
     public static List<String> day_string;
     private View previousView;
-    public ArrayList<CalendarCollect>  date_collection_arr;
+    public ArrayList<CalendarCollect>  date_collection_arr= new ArrayList<CalendarCollect>();
+    public ArrayList<Integer> first = new ArrayList<Integer>();
+    int l = first.size();
     public CalendarAdapter(Context context, GregorianCalendar monthCalendar,ArrayList<CalendarCollect> date_collection_arr)
     {
         this.date_collection_arr = date_collection_arr;
@@ -48,7 +53,7 @@ public class CalendarAdapter extends BaseAdapter
         month.set(GregorianCalendar.DAY_OF_MONTH, 1);
         Locale.setDefault(Locale.US);
         this.items = new ArrayList<String>();
-        dateFormat = new SimpleDateFormat("yyyy-mm-dd", Locale.US);
+        dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
         currentDateString = dateFormat.format(selectedDate.getTime());
         refreshDays();
     }
@@ -155,6 +160,8 @@ public class CalendarAdapter extends BaseAdapter
         return view;
     }
 
+
+
     public void refreshDays()
     {
         items.clear();
@@ -204,8 +211,9 @@ public class CalendarAdapter extends BaseAdapter
             {
                 if (day_string.get(position).equals(date))
                 {
+                    //EventManager.addEvent(new CalendarEvent());
                     view.setBackgroundColor(Color.parseColor("#343434"));
-                    txt.setTextColor(Color.WHITE);
+                    txt.setTextColor(Color.RED);
                 }
             }
         }
@@ -213,7 +221,7 @@ public class CalendarAdapter extends BaseAdapter
 
     public void getPositionList(String date,final Activity act)
     {
-        int length = CalendarCollect.date_collection_arr.size();
+       /* int length = CalendarCollect.date_collection_arr.size();
         for (int i = 0; i < length; i++)
         {
             CalendarCollect calendar_collection = CalendarCollect.date_collection_arr.get(i);
@@ -222,7 +230,7 @@ public class CalendarAdapter extends BaseAdapter
             if (date.equals(event_date))
             {
                 Toast.makeText(context, "Event: " + event_date, Toast.LENGTH_LONG).show();
-                new AlertDialog.Builder(context).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Date: "+event_date).setMessage("Event: "+event_message).setPositiveButton("OK",new android.content.DialogInterface.OnClickListener()
+                new AlertDialog.Builder(context).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Date: "+event_date).setMessage("Event: "+event_message).setPositiveButton("OK",new DialogInterface.OnClickListener()
                 {
                     public void onClick(DialogInterface dialog, int which)
                     {
@@ -234,6 +242,6 @@ public class CalendarAdapter extends BaseAdapter
             else
             {
             }
-        }
+        }*/
     }
 }

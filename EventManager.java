@@ -1,7 +1,10 @@
+package com.example.lee.calendar;
+
 import java.util.Date;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.ArrayList;
+import java.text.SimpleDateFormat;
 
 /**
  * 
@@ -105,6 +108,30 @@ public class EventManager {
 			
 		return events.get(index);
 	}
+
+	/**
+	 * Date is a string that is expected in yyy-MM-dd format.
+	 * the method will parse the date and return an arraylist of dates.
+	 * @param date
+	 * @return
+	 */
+	public static ArrayList<CalendarEvent> getEventsOnDate(String date) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date d = new Date();
+		try {
+			d = dateFormat.parse(date);
+			ArrayList<CalendarEvent> events_on_date = new ArrayList<CalendarEvent>();
+			for(CalendarEvent calEvent : events) {
+				//System.out.println(d.toString() + " - " + calEvent.getStart().toString());
+				if(calEvent.getStart().equals(d))
+					events_on_date.add(calEvent);
+			}
+			return events_on_date;
+		} catch (java.text.ParseException e) {
+			System.out.println("Parse Exception");
+		}
+		return null;
+	}
 	
 	/**
 	 * Adds calEvent to the Arraylist. Sorts arrayList if it is not empty. 
@@ -119,7 +146,7 @@ public class EventManager {
 		{
 			events.add(calEvent);
 			status = "Added event " + calEvent.getTitle() + "events sorted.";
-			Collections.sort(events);
+			//Collections.sort(events);
 			
 		}
 	
@@ -163,7 +190,7 @@ public class EventManager {
 	public static void loop() {
 		//sleep(60000);
 		Date current = new Date();
-		if(current.after(EventManager.getEvent(events.size() - 1).getStart().getTime()));
+		if(current.after(EventManager.getEvent(events.size() - 1).getStart()));
 			EventManager.onEvent();
 	}
 	
@@ -172,7 +199,7 @@ public class EventManager {
 		if(calEvent.getRepeat() == RepeatType.NO_REPEAT)
 			return;
 		Calendar cal = Calendar.getInstance();
-		cal.setTime(calEvent.getStart().getTime());
+		cal.setTime(calEvent.getStart());
 		if(calEvent.getRepeat() == RepeatType.DAILY)
 			cal.add(Calendar.DAY_OF_MONTH, 1);
 		else if(calEvent.getRepeat() == RepeatType.WEEKLY)
@@ -181,6 +208,6 @@ public class EventManager {
 			cal.add(Calendar.MONTH, 1);
 		else if(calEvent.getRepeat() == RepeatType.YEARLY)
 			cal.add(Calendar.YEAR, 1);
-		calEvent.setStart(cal);
+		calEvent.setStart(cal.getTime());
 	}
 }
