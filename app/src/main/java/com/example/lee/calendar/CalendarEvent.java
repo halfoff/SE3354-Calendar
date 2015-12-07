@@ -13,7 +13,8 @@ public class CalendarEvent implements Comparable<CalendarEvent>, java.io.Seriali
 	private Date eventEnd;
 	private EventType eventType;
 	private RepeatType repeat;
-	private String startTime, endTime;
+	private String startTime;
+    private String endTime;
 	
 	/*private LinkedList eventType;//0- Unlabled 1-Private 2- work 3- holiday
 	String eventTypename;*/
@@ -138,7 +139,12 @@ public class CalendarEvent implements Comparable<CalendarEvent>, java.io.Seriali
      */
 	public void setStartTime(int hour, int min)
 	{
-		startTime = hour +":"+ min + "";
+		String mins=min+"";
+        if(min <10 && min>=0)
+        {
+            mins = "0"+min;
+        }
+		startTime = hour +":"+ mins;
 	}
 
     /**
@@ -148,7 +154,12 @@ public class CalendarEvent implements Comparable<CalendarEvent>, java.io.Seriali
      */
 	public void setEndTime(int hour, int min)
 	{
-		endTime = hour +":"+ min + "";
+        String mins=min+"";
+        if(min <10 && min>=0)
+        {
+            mins = "0"+min;
+        }
+        endTime = hour +":"+ mins;
 	}
 
     /**

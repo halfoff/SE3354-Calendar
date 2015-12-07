@@ -65,7 +65,7 @@ public class AddEventActivity extends Activity implements OnClickListener {
         btn_Cancel.setOnClickListener(this);
         btn_Create.setOnClickListener(this);
         startTimePicker = (TimePicker) findViewById(R.id.startTimePicker);
-        endTimePicker = (TimePicker)    findViewById(R.id.startTimePicker);
+        endTimePicker = (TimePicker)    findViewById(R.id.endTimePicker);
         eventTypeGroup = (RadioGroup)   findViewById(R.id.eventTypeGroup);
         personalEvent = (RadioButton)   findViewById(R.id.personal);
         workEvent = (RadioButton)   findViewById(R.id.work);
@@ -106,11 +106,12 @@ public class AddEventActivity extends Activity implements OnClickListener {
 
                 eventTimeHR = startTimePicker.getCurrentHour();
                 eventTimeMIN = startTimePicker.getCurrentMinute();
-                endTimeHR = endTimePicker.getCurrentHour();
-                endTimeMIN = endTimePicker.getCurrentMinute();
+
                 tmpEvent.setStart(eventDate);
                 tmpEvent.setStartTime(eventTimeHR, eventTimeMIN);
-                tmpEvent.setEndTime(eventTimeHR,eventTimeMIN);
+                endTimeHR = endTimePicker.getCurrentHour();
+                endTimeMIN = endTimePicker.getCurrentMinute();
+                tmpEvent.setEndTime(endTimeHR,endTimeMIN);
                 tmpEvent.setEventType(eType);
                 
 
