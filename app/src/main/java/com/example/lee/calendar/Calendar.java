@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -22,25 +21,22 @@ public class Calendar extends Activity
     private TextView tv_month;
     private Intent currentIntent;
 
+    private CalendarSQLite calendar_sql;
+
 
     @Override
-
-    /**
-     * The main class for the application everything stems from here.
-     * This is what creates the main calendar view.
-     */
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
         EventManager.init();
-
         tv_month = (TextView) findViewById(R.id.tv_month);
         tv_month.setText(android.text.format.DateFormat.format("MM yyyy", calendar_month));
         calendar_month = (GregorianCalendar) GregorianCalendar.getInstance();
         calendar_month_clone = (GregorianCalendar) calendar_month.clone();
         calendar_adapter = new CalendarAdapter(this, calendar_month,CalendarCollect.date_collection_arr);
 
+        calendar_sql = new CalendarSQLite(this);
 
         ImageButton previous = (ImageButton) findViewById(R.id.ib_prev);
         previous.setOnClickListener(new OnClickListener() {
@@ -80,44 +76,17 @@ public class Calendar extends Activity
                     refreshCalendar();
                 }
                 ((CalendarAdapter) parent.getAdapter()).setSelected(view, position);
-                ((CalendarAdapter) parent.getAdapter()).getPositionList(selectedGridDate, Calendar.this);
+                //((CalendarAdapter) parent.getAdapter()).getPositionList(selectedGridDate, Calendar.this);
                 Intent listViewIntent = new Intent(Calendar.this, ListViewActivity.class);
                 listViewIntent.putExtra("DateSelect", selectedGridDate);
                 startActivity(listViewIntent);
+            }
 
 
-            }
-        });
-        Button weekViewBtn = (Button) findViewById(R.id.weekViewButton);
-        weekViewBtn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent weekViewActivityIntent = new Intent(Calendar.this, WeekViewActivity.class);
-                startActivity(weekViewActivityIntent);
-            }
         });
 
-        //Testing
-//        CalendarEvent event1 = new CalendarEvent("Hello World");
-//        event1.setStart("11/11/2015");
-//        CalendarEvent event2 = new CalendarEvent("Hello World again");
-//        event2.setStart("11/11/2015");
-//        CalendarEvent event3 = new CalendarEvent("Third event");
-//        event3.setStart("11/13/2015");
-//        CalendarEvent event4 = new CalendarEvent("Fourth event");
-//        event4.setStart("11/16/2015");
-//        CalendarEvent event5 = new CalendarEvent("Fifth event");
-//        event5.setStart("11/18/2015");
-//        EventManager.addEvent(event1);
-//        EventManager.addEvent(event2);
-//        EventManager.addEvent(event3);
-//        EventManager.addEvent(event4);
-//        EventManager.addEvent(event5);
+        calendar_sql.getAllEvents();
     }
-
-    /**
-     * Utility for swapping month view to the next month.
-     */
     protected void setPreviousMonth()
     {
         if (calendar_month.get(GregorianCalendar.MONTH) == calendar_month.getActualMinimum(GregorianCalendar.MONTH))
@@ -129,10 +98,6 @@ public class Calendar extends Activity
             calendar_month.set(GregorianCalendar.MONTH, calendar_month.get(GregorianCalendar.MONTH) - 1);
         }
     }
-
-    /**
-     * Utility for swapping month view to the next month.
-     */
     protected void setNextMonth()
     {
         if (calendar_month.get(GregorianCalendar.MONTH) == calendar_month.getActualMaximum(GregorianCalendar.MONTH))
@@ -145,9 +110,6 @@ public class Calendar extends Activity
         }
     }
 
-    /**
-     * refreshes the calendar view. Redraws and assures that the calendar view displays properly
-     */
     public void refreshCalendar()
     {
         calendar_adapter.refreshDays();
