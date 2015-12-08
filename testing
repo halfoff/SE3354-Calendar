@@ -1,0 +1,32 @@
+Testing
+	•	We’re testing the clicks to make sure it leads user to add page
+	•	Input- the user clicks to lead him or her to add page
+	•	Output- leads user to the add page
+	•	Expected output- leads user to add stage
+	•	We’re checking to make sure the days are all displayed in appropriate color
+	•	Input- let home screen load
+	•	Output- the 2nd day is colored red
+	•	Expected output- all days should be colored the same color
+	•	Refactoring- we realized the code checks for an array length to match the position which coincides to day 2 so by changing the code the issue is no longer there 
+	•	We’re testing the clicks to make sure it leads user to the page where he or she can set the event type and time
+	•	Input- the user clicks to lead him or her to the page
+	•	Output- leads user to the event category page
+	•	Expected output- leads user to event category stage
+	•	We’re testing the clicks to make sure it leads user to the add page after clicking the plus button on the top left
+	•	Input- the user clicks to lead him or her to the page
+	•	Output- leads user to the add  page
+	•	Expected output- leads user to add stage
+	•	We’re testing to make sure that after adding an event it shows for the day the user added the event
+	•	Input- the user clicks on the day he or she added the event to
+	•	Output- leads user to list view with events
+	•	Expected output- leads user to list view with events 
+	•	We’re testing to make sure that when clicking weekly view all the events for that week show up
+	•	Input- the user clicks on the weekly view button
+	•	Output- leads user to weekly view button but the time cuts of leading zero
+	•	Expected output- shouldn’t cut off leading zero
+	•	 Refactoring- we realized the program cuts off the truncated zero so we specified a clause specifically not to do that. 
+
+
+
+
+
