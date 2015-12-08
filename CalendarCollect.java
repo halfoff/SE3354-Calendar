@@ -2,6 +2,9 @@ package com.example.lee.calendar;
 
 import java.util.ArrayList;
 
+/**
+ * Class used to properly display events and text in ListViewActivity
+ */
 public class CalendarCollect
 {
     public String date = "";
@@ -9,8 +12,7 @@ public class CalendarCollect
     public static ArrayList<CalendarCollect> date_collection_arr= new ArrayList<CalendarCollect>();
     public CalendarCollect(String date,String event_message)
     {
-        ArrayList<CalendarEvent> events_on_date;
-        events_on_date = EventManager.getEventsOnDate(date);
+        ArrayList<CalendarEvent> events_on_date = EventManager.getEventsOnDate(date);
         this.date = date;
         if(events_on_date.isEmpty()) {
             this.event_message = "No events today";

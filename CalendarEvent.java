@@ -1,50 +1,28 @@
 package com.example.lee.calendar;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
 
 
 public class CalendarEvent implements Comparable<CalendarEvent>, java.io.Serializable{
-	
-	/*try{
-// Serialize data object to a file
-ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("CalendarEvent.ser"));
-out.writeObject(object);
-out.close();
 
-// Serialize data object to a byte array
-ByteArrayOutputStream bos = new ByteArrayOutputStream() ;
-out = new ObjectOutputStream(bos) ;
-out.writeObject(object);
-out.close();
-
-// Get the bytes of the serialized object
-byte[] buf = bos.toByteArray();
-} catch (IOException e) {
-}*/
-
-/*
-this is for reading the file back 
-
-try{ FileInputStream door = new FileInputStream
-("name_of_file.sav"); ObjectInputStream reader = new
-ObjectInputStream(door); MyObject x = new MyObject(); x =
-(MyObject) reader.nextObject(); }catch (IOException e)
-{ e.printStackTrace(); }
-
-
-*/
 
 	private String title;
 	private Date eventStart;
 	private Date eventEnd;
 	private EventType eventType;
 	private RepeatType repeat;
-	private String startTime, endTime;
+	private String startTime;
+    private String endTime;
 	
 	/*private LinkedList eventType;//0- Unlabled 1-Private 2- work 3- holiday
 	String eventTypename;*/
+
+	/**
+	 * default constructor for calendar event.
+	 */
 	
 	public CalendarEvent()
 	{
@@ -57,12 +35,21 @@ ObjectInputStream(door); MyObject x = new MyObject(); x =
 		repeat = RepeatType.NO_REPEAT;
 	}
 
+	/**
+	 * Constructor for calendar event with user defined title.
+	 * @param t
+	 */
 	public CalendarEvent(String t) {
 		this.title = t;
 		repeat = RepeatType.NO_REPEAT;
 		eventType = EventType.UNLABLED;
 	}
 
+	/**
+	 * Contstructor for calendar event with user defined title and event type.
+	 * @param t
+	 * @param et
+	 */
 	public CalendarEvent(String t, EventType et)
 	{
 		// here we are looking if the category is in the linked list if it is then we do nothing and simply set name
@@ -84,55 +71,126 @@ ObjectInputStream(door); MyObject x = new MyObject(); x =
 		
 	}
 
+	/**
+	 * Overwritten version of the tostring.
+	 *
+	 * @return String in format of "Title: [title] Date: [date]
+	 */
 	public String toString() {
 		return "Title: " + this.title + " Date: " + this.eventStart.toString();
 	}
 
+	/**
+	 *
+	 * @return returns repeat type
+	 */
 	public RepeatType getRepeat()
 	{
 		return this.repeat;
 	}
-	
+
+	/**
+	 * Sets repeat type.
+	 * @param rt
+	 */
 	public void setRepeat(RepeatType rt) {
 		this.repeat = rt;
 	}
 
-	
+	/**
+	 *
+	 * @return returns title of event.
+	 */
 	public String getTitle()
 	{
 		return this.title;
 	}
-	
+
+	/**
+	 * Change title of event.
+	 * @param new_title
+	 */
 	public void setTitle(String new_title) {
 		this.title = new_title;
 	}
-	
+
+    /**
+     *
+     * @return event type
+     */
 	public EventType getEventType()
 	{
 		
 		return this.eventType;
 	}
 
+    /**
+     * Sets new event type
+     * @param eT
+     */
 	public void setEventType(EventType eT){
 		
 		this.eventType = eT;
 	}
-	public void setStartTime(int hour, int min)
+
+    /**
+     * Sets start time for event as a string in the formation of hour:min
+     * @param hour
+     * @param min
+     */
+	public void setStartTime(int hour, int min) throws ParseException
 	{
-		startTime = hour +":"+ min + "";
+		String mins=min+"";
+        if(min <10 && min>=0)
+        {
+            mins = "0"+min;
+        }
+		startTime = hour +":"+ mins;
+       // SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        //Date tmpD = sdf.parse(startTime);
+        //eventEnd.setTime(tmpD.getTime());
 	}
-	public void setEndTime(int hour, int min)
+
+    /**
+     * Sets end time for event as a string in the formation of hour:min
+     * @param hour
+     * @param min
+     */
+	public void setEndTime(int hour, int min) throws ParseException
 	{
-		endTime = hour +":"+ min + "";
+        String mins=min+"";
+        if(min <10 && min>=0)
+        {
+            mins = "0"+min;
+        }
+        endTime = hour +":"+ mins;
+       /* SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        Date tmpD = sdf.parse(endTime);
+        eventEnd.setTime(tmpD.getTime());
+        */
 	}
+
+    /**
+     *
+     * @return start time of event as string in the form of HR:MIN
+     */
 	public String getStartTime(){
 		return startTime;
 	}
+
+    /**
+     *
+     * @return end time of event as string int he form of HR:MIN
+     */
 	public String getEndTime()
 	{
 		return endTime;
 	}
 
+    /**
+     * 
+     * @param date
+     */
 	public void setStart(String date) {
 		//Calendar cal = Calendar.getInstance();
 		//cal.set(year, month, date);

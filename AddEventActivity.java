@@ -2,6 +2,7 @@ package com.example.lee.calendar;
 
 import android.app.Activity;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -20,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
+ * Activity for adding events.
  * Created by Jack on 11/11/2015.
  */
 
@@ -42,6 +45,8 @@ public class AddEventActivity extends Activity implements OnClickListener {
     private String eventDate;
     private Bundle extra;
     private EventType eType;
+
+
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -52,6 +57,9 @@ public class AddEventActivity extends Activity implements OnClickListener {
 
     }
 
+    /**
+     * initializes widgets.
+     */
     public void getWidget()
     {
         btn_Create = (Button)   findViewById(R.id.btn_createEvent);
@@ -59,13 +67,12 @@ public class AddEventActivity extends Activity implements OnClickListener {
         btn_Cancel.setOnClickListener(this);
         btn_Create.setOnClickListener(this);
         startTimePicker = (TimePicker) findViewById(R.id.startTimePicker);
-        endTimePicker = (TimePicker)    findViewById(R.id.startTimePicker);
+        endTimePicker = (TimePicker)    findViewById(R.id.endTimePicker);
         eventTypeGroup = (RadioGroup)   findViewById(R.id.eventTypeGroup);
         personalEvent = (RadioButton)   findViewById(R.id.personal);
         workEvent = (RadioButton)   findViewById(R.id.work);
         holidayEvent = (RadioButton)   findViewById(R.id.holiday);
         otherEvent = (RadioButton)   findViewById(R.id.other);
-
         txt_Title = (EditText)  findViewById(R.id.txt_editTitle);
 
 
@@ -73,6 +80,10 @@ public class AddEventActivity extends Activity implements OnClickListener {
     }
 
     @Override
+    /**
+     * Switch statement for different button presse. This also handles the category switch
+     *
+     */
     public void onClick(View view)
     {
         int selectedId = eventTypeGroup.getCheckedRadioButtonId();
@@ -97,30 +108,38 @@ public class AddEventActivity extends Activity implements OnClickListener {
 
                 eventTimeHR = startTimePicker.getCurrentHour();
                 eventTimeMIN = startTimePicker.getCurrentMinute();
+
+                tmpEvent.setStart(eventDate);
+
                 endTimeHR = endTimePicker.getCurrentHour();
                 endTimeMIN = endTimePicker.getCurrentMinute();
-                tmpEvent.setStart(eventDate);
-                tmpEvent.setStartTime(eventTimeHR, eventTimeMIN);
-                tmpEvent.setEndTime(eventTimeHR,eventTimeMIN);
+                try{
+                    tmpEvent.setStartTime(eventTimeHR, eventTimeMIN);
+                    tmpEvent.setEndTime(endTimeHR, endTimeMIN);
+                }catch(ParseException e){}
+
+
                 tmpEvent.setEventType(eType);
                 
 
+                //if(!EventManager.checkDayConflict(eventDate)){
 
-                EventManager.addEvent(tmpEvent);
-                Log.i("Event Added", tmpEvent.toString());
+                    EventManager.addEvent(tmpEvent);
+                    this.finish();
+                /*}else{
 
-                //indexOfAdd=EventManager.addEvent(new CalendarEvent());
-                //System.out.println("Event Added "+EventManager.getEvent(indexOfAdd).toString());
-                this.finish();
+
+                     Toast.makeText(getApplicationContext(), "Event Not created. Time Conflict", Toast.LENGTH_LONG).show();
+
+               }*/
+
+
+
                 break;
             case R.id.btn_Cancel:
-                System.out.println("Event cancled");
                 this.finish();
                 break;
-
-
             default:
-                System.out.println("How did you default");
                 break;
         }
     }

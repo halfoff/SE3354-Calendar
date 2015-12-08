@@ -24,6 +24,11 @@ public class Calendar extends Activity
 
 
     @Override
+
+    /**
+     * The main class for the application everything stems from here.
+     * This is what creates the main calendar view.
+     */
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -109,6 +114,10 @@ public class Calendar extends Activity
 //        EventManager.addEvent(event4);
 //        EventManager.addEvent(event5);
     }
+
+    /**
+     * Utility for swapping month view to the next month.
+     */
     protected void setPreviousMonth()
     {
         if (calendar_month.get(GregorianCalendar.MONTH) == calendar_month.getActualMinimum(GregorianCalendar.MONTH))
@@ -120,6 +129,10 @@ public class Calendar extends Activity
             calendar_month.set(GregorianCalendar.MONTH, calendar_month.get(GregorianCalendar.MONTH) - 1);
         }
     }
+
+    /**
+     * Utility for swapping month view to the next month.
+     */
     protected void setNextMonth()
     {
         if (calendar_month.get(GregorianCalendar.MONTH) == calendar_month.getActualMaximum(GregorianCalendar.MONTH))
@@ -132,6 +145,9 @@ public class Calendar extends Activity
         }
     }
 
+    /**
+     * refreshes the calendar view. Redraws and assures that the calendar view displays properly
+     */
     public void refreshCalendar()
     {
         calendar_adapter.refreshDays();
