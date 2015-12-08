@@ -123,7 +123,8 @@ public class EventManager {
 			d = dateFormat.parse(date);
 			ArrayList<CalendarEvent> events_on_date = new ArrayList<CalendarEvent>();
 			for(CalendarEvent calEvent : events) {
-				//System.out.println(d.toString() + " - " + calEvent.getStart().toString());
+				if(calEvent == null || d == null)
+					System.exit(-1000);
 				if(calEvent.getStart().equals(d))
 					events_on_date.add(calEvent);
 			}

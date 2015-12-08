@@ -23,7 +23,6 @@ public class Calendar extends Activity
 
     private CalendarSQLite calendar_sql;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -37,6 +36,7 @@ public class Calendar extends Activity
         calendar_adapter = new CalendarAdapter(this, calendar_month,CalendarCollect.date_collection_arr);
 
         calendar_sql = new CalendarSQLite(this);
+        calendar_sql.getAllEvents();
 
         ImageButton previous = (ImageButton) findViewById(R.id.ib_prev);
         previous.setOnClickListener(new OnClickListener() {
@@ -85,7 +85,7 @@ public class Calendar extends Activity
 
         });
 
-        calendar_sql.getAllEvents();
+
     }
     protected void setPreviousMonth()
     {

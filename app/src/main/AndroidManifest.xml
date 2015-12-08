@@ -24,6 +24,9 @@
             android:label="AddEventActivity"></activity>
         <activity android:name="com.example.lee.calendar.WeekViewActivity"
             android:label="WeekViewActivity"></activity>
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     </application>
 
 </manifest>

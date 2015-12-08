@@ -29,7 +29,7 @@ public final class CalendarSQLite extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // TODO Auto-generated method stub
         db.execSQL(
-                "create table calendar " +
+                "create table if not exists calendar " +
                         "(id integer primary key, title text, start text, end text, type integer)"
         );
     }
@@ -67,6 +67,7 @@ public final class CalendarSQLite extends SQLiteOpenHelper {
 
     public void getAllEvents()
     {
+        System.out.println(numberOfRows());
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res =  db.rawQuery( "select * from calendar", null );
         res.moveToFirst();
@@ -74,6 +75,7 @@ public final class CalendarSQLite extends SQLiteOpenHelper {
         while(res.isAfterLast() == false){
             String title = res.getString(res.getColumnIndex(COLUMN_NAME_TITLE));
             String start = res.getString(res.getColumnIndex(COLUMN_NAME_START));
+            System.out.println(start);
             String end = res.getString(res.getColumnIndex(COLUMN_NAME_END));
             EventType et = EventType.values()[res.getInt(res.getColumnIndex(COLUMN_NAME_TYPE))];
             CalendarEvent calEvent = new CalendarEvent(title);
